@@ -13,7 +13,7 @@
   <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <title>Squid Game</title>
+  <title>Squidverse</title>
    <style>
     :not(:defined) > * {
       display: none;
@@ -330,8 +330,7 @@
   </style>
 </head>
 <body>
-  <model-viewer src="./models/RedLight/RedLight.glb" ios-src="./models/RedLight/RedLight.usdz"
-  style="width: 100vw; height: 100vh;" camera-controls shadow-intensity="2" touch-action="pan-y" ar scale="0.1 0.1 0.1" min-camera-orbit="auto auto 1m" max-camera-orbit="auto auto 300m" camera-orbit="180deg 80deg 2.5m">
+  <model-viewer src="./models/RedLight/RedLight.glb" style="width: 100vw; height: 100vh;" camera-controls shadow-intensity="2" touch-action="pan-y" ar scale="0.1 0.1 0.1" min-camera-orbit="auto auto 1m" max-camera-orbit="auto auto 20m" camera-orbit="180deg 80deg 1m">
 
   <!-- Info Feature -->
   <button id="info-icon">
@@ -348,9 +347,12 @@
 
   <div class="slider">
     <div class="slides">
-      
+
       <!-- Red Light Green Light -->
       <button class="slide selected" onclick="switchSrc(this, './models/RedLight', 'RedLight', 'Red Light')" style="background-image: url('./models/RedLight/RedLight.jpeg');"></button>
+
+      <!-- Mingle -->
+      <button class="slide" onclick="switchSrc(this, './models/Mingle', 'Mingle', 'Mingle')" style="background-image: url('./models/Mingle/Mingle.jpg');"></button>
 
     </div>
   </div>
@@ -374,8 +376,15 @@ const infoText = {
   "Red Light": {
     title: "Red Light Green Light",
     description: "• A luxury sports car with a powerful V10 engine.\n• Known for its sleek design and top-tier performance.",
-    music: "./sounds/RedLight.mp3"
-  }
+    music: "./sounds/RedLight.mp3",
+    orbit: "180deg 80deg 1m"
+  },
+  "Mingle": {
+    title: "Mingle",
+    description: "• A luxury sports car with a powerful V10 engine.\n• Known for its sleek design and top-tier performance.",
+    music: "./sounds/Mingle.mp3",
+    orbit: "180deg 80deg 0.1m"
+  },
 };
 
 let gameMusic = new Audio();
@@ -419,7 +428,7 @@ infoIcon.addEventListener("click", () => {
         icon.classList.add('fa-play');
         gameMusic.pause();
     }
-});
+  });
 
 
 // Switch game model and update
@@ -427,10 +436,11 @@ window.switchSrc = (element, foldername, name, carName) => {
   const base = `/${foldername}/${name}`;
   modelViewer.src = base + ".glb";
   modelViewer.poster = base + ".png";
-  modelViewer.iosSrc = base + ".usdz";
-  gameMusic.src = infoText[name].music;
+  gameMusic.src = infoText[carName].music;
+  modelViewer.cameraOrbit = infoText[carName].orbit;
 
-
+  currentGameName = carName;
+  
   const slides = document.querySelectorAll(".slide");
   slides.forEach((slide) => slide.classList.remove("selected"));
   element.classList.add("selected");
@@ -452,6 +462,7 @@ window.switchSrc = (element, foldername, name, carName) => {
       }
     });
   }
+
 };
 
 // Prevent XR interaction issues with the slider
