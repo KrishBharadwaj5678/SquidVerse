@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/android-chrome-512x512.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/android-chrome-192x192.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <title>Squid Game</title>
+   <style>
+    :not(:defined) > * {
+      display: none;
+    }
+
+    model-viewer {
+      background-color: #eee;
+      overflow-x: hidden;
+      width: 100%;
+      height: 100vh;
+    }
+
+    /* Info icon button */
+    #info-icon, #music-icon{
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: linear-gradient(135deg, #4285f4, #1e3a8a);
+      color: white;
+      font-size: 21px;
+      width: 50px;
+      height: 50px;
+      padding: 10px;
+      border: none;
+      border-radius: 50%;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+    }
+
+    #info-icon:hover {
+      background: linear-gradient(135deg, #1e3a8a, #4285f4);
+      transform: scale(1.1);
+    }
+
+    #music-icon{
+      top: 85px;
+    }
+
+    #horn-icon {
+      position: fixed;
+      top: 15px;
+      left: 16px;
+      z-index: 9999;
+      background-color: #007bff; /* Customize color as needed */
+      color: white;
+      border: none;
+      padding: 12px 17px;
+      border-radius: 50%;
+      font-size: 18px;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s ease;
+    }
+
+    #horn-icon:hover {
+      background-color: #0056b3;
+    }
+
+    /* Modern Info Box */
+    #info-display {
+      position: absolute;
+      top: 75px;
+      right: 18px;
+      background: linear-gradient(135deg, #ffffff, #f0f4f8);
+      color: #333;
+      font-family: 'Roboto', sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+      padding: 15px 20px;
+      border-radius: 10px;
+      box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+      display: none;
+      white-space: pre-wrap; /* Allows line breaks */
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    #info-display h3 {
+      margin: 0 0 4px 0;
+      font-size: 21px;
+      font-weight: bold;
+      color: #1e3a8a;
+      text-align: center;
+    }
+
+    #info-display p {
+      margin: 0;
+      font-size: 15px;
+      color: #555;
+    }
+
+    /* Fade-in animation */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .slider {
+      width: 100%;
+      text-align: center;
+      overflow: hidden;
+      position: absolute;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      margin: 0px 50px 0px 20px;
+    }
+
+    .slides {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      margin-right: 30px;
+    }
+
+    .slide {
+      scroll-snap-align: start;
+      flex-shrink: 0;
+      width: 100px;
+      height: 100px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-color: #fff;
+      margin-right: 10px;
+      border-radius: 5px;
+      border: none;
+      display: flex;
+    }
+
+    .slide.selected {
+      border: 3px solid #E9659B;
+    }
+
+    div#info-display h3.carname{
+     font-size: 22px;
+    }
+
+    div#info-display p.carinfo{
+     font-size: 17px;
+    }
+
+  /* Responsive for Tablets */
+  @media (max-width: 768px) {
+      /* Adjust model-viewer for smaller screens */
+      model-viewer {
+        height: 80vh;
+      }
+
+      /* Info box positioning */
+      #info-display {
+        top: 71px;
+        right: 20px;
+        font-size: 14px;
+        padding: 12px;
+      }
+
+      /* Info icon size */
+      #info-icon, #music-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
+      }
+
+      /* Slider button size for smaller screens */
+      .slide {
+        width: 80px;
+        height: 80px;
+      }
+
+      /* Adjust slider for smaller screens */
+      .slider {
+        bottom: 8px;
+        margin: 0 20px;
+      }
+
+      div#info-display h3.carname{
+       font-size: 20px;
+      }
+
+     div#info-display p.carinfo{
+      font-size: 17px;
+     }
+
+     #horn-icon {
+       left: 20px;
+       padding: 13px 17px;
+       font-size: 16px;
+     }
+    }
+
+  /* Responsive for Mobiles */
+  @media (max-width: 480px) {
+      /* Adjust model-viewer further for small screens */
+      model-viewer {
+        height: 60vh;
+      }
+
+      /* Info box and icon for very small screens */
+      #info-display {
+        top: 66px;
+        right: 16px;
+        width: 85%;
+        font-size: 12px;
+      }
+
+      #info-icon, #music-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 14px;
+      }
+
+      /* Slider button size for very small screens */
+      .slide {
+        width: 60px;
+        height: 60px;
+      }
+
+      /* Adjust slider for very small screens */
+      .slider {
+        bottom: 4px;
+        margin: 0 10px;
+      }
+
+      div#info-display h3.carname{
+      font-size: 21px;
+      }
+
+      div#info-display p.carinfo{
+      font-size: 16px;
+      }
+
+      #horn-icon {
+       left: 18px;
+       padding: 11px 15px;
+       font-size: 16px;
+     }
+
+  }
+
+  /* Styling of AR Button */
+
+  .transparent {
+    background-color: transparent;
+    border-radius: 50%;
+    border: none;
+    position: relative;
+    width: 65px;
+    height: 65px;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10; /* Ensure it's above other elements */
+  }
+
+  .ar-icon {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+  }
+
+  /* Responsive Design for AR Button (Laptops/PC) */
+  @media (max-width: 1500px) {
+    /* Adjust size and positioning for mobile */
+    .transparent {
+      padding: 10px;
+    }
+
+    .ar-icon {
+      width: 73px; /* Smaller size for mobile */
+      height: 73px;
+      left: 0px;
+      top: -3.3px;
+    }
+  }
+
+  /* Responsive Design for AR Button (Tablets) */
+  @media (max-width: 768px) {
+    /* Adjust size and positioning for tablets */
+    .transparent {
+      padding: 12px;
+    }
+
+    .ar-icon {
+      width: 66px; /* Slightly smaller for tablets */
+      height: 66px;
+      left: 0px;
+      top: -1px;
+    }
+  }
+
+  /* Responsive Design for AR Button (Mobiles) */
+  @media (max-width: 480px) {
+    /* Adjust size and positioning for mobile */
+    .transparent {
+      padding: 10px;
+    }
+
+    .ar-icon {
+      width: 57px; /* Smaller size for mobile */
+      height: 57px;
+      left: 0px;
+      top: 0px;
+    }
+  }
+
+  </style>
+</head>
+<body>
+  <model-viewer src="./models/RedLight/RedLight.glb" ios-src="./models/RedLight/RedLight.usdz"
+  style="width: 100vw; height: 100vh;" camera-controls shadow-intensity="2" touch-action="pan-y" ar scale="2 2 2" min-camera-orbit="auto auto 1m" max-camera-orbit="auto auto 300m" camera-orbit="180deg 80deg 2.5m">
+
+  <!-- Info Feature -->
+  <button id="info-icon">
+    <i class="fas fa-info"></i>
+  </button>
+
+  <div id="info-display"></div>
+
+  <!-- Music Icon -->
+  <button id="music-icon">
+    <i class="fas fa-play"></i>
+  </button>
+
+
+  <div class="slider">
+    <div class="slides">
+      
+      <!-- Red Light Green Light -->
+      <button class="slide selected" onclick="switchSrc(this, './models/RedLight', 'RedLight', 'Red Light')" style="background-image: url('./models/RedLight/RedLight.jpeg');"></button>
+
+    </div>
+  </div>
+
+  <button slot="ar-button" 
+    style="background-color: transparent; border-radius: 50%; border: none; position: absolute; top: 60px; left: 10px; padding: 10px; cursor: pointer;" 
+    class="transparent">
+  <img src="./assets/arIcon.png" width="40px" height="40px" class="ar-icon">
+  </button>
+
+  </model-viewer>
+
+<script type="module">
+const modelViewer = document.querySelector("model-viewer");
+const infoIcon = document.getElementById("info-icon");
+const infoDisplay = document.getElementById("info-display");
+const musicIcon = document.getElementById("music-icon");
+
+// Object storing car names and descriptions
+const infoText = {
+  "Red Light": {
+    title: "Red Light Green Light",
+    description: "• A luxury sports car with a powerful V10 engine.\n• Known for its sleek design and top-tier performance.",
+    music: "./sounds/RedLight.mp3"
+  }
+};
+
+let gameMusic = new Audio();
+gameMusic.src = infoText["Red Light"].music;
+let currentGameName = "Red Light";
+
+// Toggle info display with GSAP animation
+infoIcon.addEventListener("click", () => {
+  if (infoDisplay.style.display === "none" || !infoDisplay.style.display) {
+    infoDisplay.style.display = "block"; // Ensure it's visible for animation
+    infoDisplay.innerHTML = `<h3 class='carname'">${infoText[currentGameName].title}</h3><p class="carinfo">${infoText[currentGameName].description}</p>`;
+    gsap.fromTo(
+      infoDisplay,
+      { y: -20, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.5, ease: "power3.out" }
+    );
+  } else {
+    gsap.to(infoDisplay, {
+      y: -20,
+      opacity: 0,
+      duration: 0.5,
+      ease: "power3.in",
+      onComplete: () => {
+        infoDisplay.style.display = "none"; // Hide after animation
+      }
+    });
+  }
+});
+
+  // Music Icon Switcher
+  musicIcon.addEventListener('click', function() {
+    const icon = this.querySelector('i');
+    
+    // Toggle between icons
+    if (icon.classList.contains('fa-play')) {
+        icon.classList.remove('fa-play');
+        icon.classList.add('fa-pause');
+        gameMusic.play();
+    } else if (icon.classList.contains('fa-pause')) {
+        icon.classList.remove('fa-pause');
+        icon.classList.add('fa-play');
+        gameMusic.pause();
+    }
+});
+
+
+// Switch game model and update
+window.switchSrc = (element, foldername, name, carName) => {
+  const base = `/${foldername}/${name}`;
+  modelViewer.src = base + ".glb";
+  modelViewer.poster = base + ".png";
+  modelViewer.iosSrc = base + ".usdz";
+  gameMusic.src = infoText[name].music;
+
+
+  const slides = document.querySelectorAll(".slide");
+  slides.forEach((slide) => slide.classList.remove("selected"));
+  element.classList.add("selected");
+
+  // If info is visible, animate update
+  if (infoDisplay.style.display === "block") {
+    gsap.to(infoDisplay, {
+      y: -10,
+      opacity: 0,
+      duration: 0.3,
+      ease: "power1.in",
+      onComplete: () => {
+        infoDisplay.innerHTML = `<h3>${infoText[currentGameName].title}</h3><p>${infoText[currentGameName].description}</p>`;
+        gsap.fromTo(
+          infoDisplay,
+          { y: 10, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.3, ease: "power1.out" }
+        );
+      }
+    });
+  }
+};
+
+// Prevent XR interaction issues with the slider
+document.querySelector(".slider").addEventListener("beforexrselect", (ev) => {
+  ev.preventDefault();
+});
+
+</script>
+</body>
+</html>
