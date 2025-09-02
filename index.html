@@ -13,6 +13,13 @@
   <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+  <link rel="icon" type="image/png" href="favicon/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="favicon/favicon.svg" />
+  <link rel="shortcut icon" href="favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="Squidverse" />
+  <link rel="manifest" href="favicon/site.webmanifest" />
   <title>Squidverse</title>
    <style>
     :not(:defined) > * {
@@ -27,11 +34,11 @@
     }
 
     /* Info icon button */
-    #info-icon, #music-icon{
+    #info-icon, #music-icon, #rules-icon, #setting-icon, #youtube-icon, #screenshot-icon{
       position: absolute;
       top: 16px;
       right: 16px;
-      background: linear-gradient(135deg, #4285f4, #1e3a8a);
+      background: linear-gradient(135deg, #EB0A62, #C33A6D);  
       color: white;
       font-size: 21px;
       width: 50px;
@@ -44,8 +51,8 @@
       transition: all 0.3s ease-in-out;
     }
 
-    #info-icon:hover {
-      background: linear-gradient(135deg, #1e3a8a, #4285f4);
+    #info-icon:hover, #music-icon:hover, #rules-icon:hover, #setting-icon:hover, #screenshot-icon:hover, #youtube-icon:hover  {
+      background: linear-gradient(135deg, #CC2C64, #A83E66);
       transform: scale(1.1);
     }
 
@@ -53,32 +60,30 @@
       top: 85px;
     }
 
-    #horn-icon {
-      position: fixed;
-      top: 15px;
+    #rules-icon{
+      top: 153px;
+    }
+
+    #setting-icon{
+      top: 16px;
       left: 16px;
-      z-index: 9999;
-      background-color: #007bff; /* Customize color as needed */
-      color: white;
-      border: none;
-      padding: 12px 17px;
-      border-radius: 50%;
-      font-size: 18px;
-      cursor: pointer;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      transition: background-color 0.3s ease;
     }
 
-    #horn-icon:hover {
-      background-color: #0056b3;
+    #screenshot-icon{
+      top: 85px;
+      left: 16px;
     }
 
-    /* Modern Info Box */
+    #youtube-icon{
+      top: 153px;
+      left: 16px;
+    }
+
+    /* Info Box */
     #info-display {
       position: absolute;
-      top: 75px;
-      right: 18px;
-      background: linear-gradient(135deg, #ffffff, #f0f4f8);
+      top: 60px;
+      right: 70px;
       color: #333;
       font-family: 'Roboto', sans-serif;
       font-size: 16px;
@@ -87,22 +92,23 @@
       border-radius: 10px;
       box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
       display: none;
-      white-space: pre-wrap; /* Allows line breaks */
+      white-space: pre-wrap; 
       animation: fadeIn 0.3s ease-out;
+      color: #fff;
+      background: linear-gradient(135deg, #E14D6F, #D7325A);
+      z-index: 999;
     }
 
     #info-display h3 {
       margin: 0 0 4px 0;
       font-size: 21px;
-      font-weight: bold;
-      color: #1e3a8a;
+      font-weight: 500;
       text-align: center;
     }
 
     #info-display p {
       margin: 0;
       font-size: 15px;
-      color: #555;
     }
 
     /* Fade-in animation */
@@ -126,6 +132,9 @@
       left: 50%;
       transform: translateX(-50%);
       margin: 0px 50px 0px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .slides {
@@ -146,7 +155,7 @@
       background-repeat: no-repeat;
       background-position: center;
       background-color: #fff;
-      margin-right: 10px;
+      margin-right: 15px;
       border-radius: 5px;
       border: none;
       display: flex;
@@ -162,11 +171,11 @@
 
     div#info-display p.carinfo{
      font-size: 17px;
+     line-height: 1.6;
     }
 
   /* Responsive for Tablets */
   @media (max-width: 768px) {
-      /* Adjust model-viewer for smaller screens */
       model-viewer {
         height: 80vh;
       }
@@ -180,7 +189,7 @@
       }
 
       /* Info icon size */
-      #info-icon, #music-icon {
+      #info-icon, #music-icon, #rules-icon, #setting-icon, #youtube-icon, #screenshot-icon {
         width: 45px;
         height: 45px;
         font-size: 18px;
@@ -206,11 +215,6 @@
       font-size: 17px;
      }
 
-     #horn-icon {
-       left: 20px;
-       padding: 13px 17px;
-       font-size: 16px;
-     }
     }
 
   /* Responsive for Mobiles */
@@ -228,7 +232,7 @@
         font-size: 12px;
       }
 
-      #info-icon, #music-icon {
+      #info-icon, #music-icon, #rules-icon, #setting-icon, #youtube-icon, #screenshot-icon {
         width: 40px;
         height: 40px;
         font-size: 14px;
@@ -238,12 +242,13 @@
       .slide {
         width: 60px;
         height: 60px;
+        margin-right: 10px;
       }
 
       /* Adjust slider for very small screens */
       .slider {
         bottom: 4px;
-        margin: 0 10px;
+        margin: 0 18px;  /* Todo to be 0px 10px */
       }
 
       div#info-display h3.carname{
@@ -253,12 +258,6 @@
       div#info-display p.carinfo{
       font-size: 16px;
       }
-
-      #horn-icon {
-       left: 18px;
-       padding: 11px 15px;
-       font-size: 16px;
-     }
 
   }
 
@@ -327,10 +326,142 @@
     }
   }
 
+  /* Setting */
+  #settings-popup {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.4); /* lighter backdrop */
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+
+  .popup-content {
+    background: linear-gradient(135deg, #F8759A, #EB0A62); /* lighter pink tone */
+    padding: 22px;
+    border-radius: 18px;
+    text-align: center;
+    width: 330px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+    font-family: "Poppins", sans-serif;
+    color: #fff;
+  }
+
+  .popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .popup-header h3 {
+    font-size: 21px;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: 1px;
+  }
+
+  .close-icon {
+    font-size: 22px;
+    cursor: pointer;
+    color: #fff;
+    transition: transform 0.2s, color 0.3s;
+
+  }
+  .close-icon:hover {
+    transform: scale(1.2);
+    color: #f5f0f0;
+  }
+
+  /* Controls */
+  .lighting-control, .shadow-control, .animation-control {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 10px 0;
+    background: rgba(255,255,255,0.2);
+    padding: 10px 12px;
+    border-radius: 12px;
+  }
+
+  .lighting-control label,
+  .shadow-control label {
+    font-weight: 500;
+    color: #fff;
+  }
+
+  input[type="range"] {
+    accent-color: #ffccd9; /* light pink slider */
+    cursor: pointer;
+  }
+
+  .animation-control label {
+    font-weight: 500;
+    color: #fff;
+  }
+
+  .animation-control input[type="checkbox"] {
+    transform: scale(1.2);
+    accent-color: #ffccd9;
+    cursor: pointer;
+  }
+
+  /* AR Mode */
+  .ar-control {
+    border-radius: 12px;
+    padding: 14px;
+    background: rgba(255,255,255,0.2); 
+    margin-top: 14px;
+  }
+
+  .ar-label {
+    font-size: 17px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    display: block;
+    color: #fff;
+  }
+
+  .ar-options {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ar-option {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: background 0.3s ease;
+  }
+
+  .ar-option:hover {
+    background: rgba(255,255,255,0.3);
+  }
+
+  .ar-option input[type="radio"] {
+    accent-color: #ffccd9; 
+    transform: scale(1.2);
+    cursor: pointer;
+  }
+
+  .ar-option span {
+    font-size: 15px;
+    color: #fff;
+  }
+
   </style>
 </head>
 <body>
-  <model-viewer src="./models/RedLight/RedLight.glb" style="width: 100vw; height: 100vh;" camera-controls shadow-intensity="2" touch-action="pan-y" ar scale="0.1 0.1 0.1" min-camera-orbit="auto auto 1m" max-camera-orbit="auto auto 20m" camera-orbit="180deg 80deg 1m">
+
+  <!-- Todo: Automatic Sound should play when switched, Responsive  -->
+
+  <!-- https://gltf-viewer.donmccurdy.com/ -->
+
+  <model-viewer src="./models/RedLight/RedLight.glb" style="width: 100vw; height: 100vh;" camera-controls shadow-intensity="1" touch-action="pan-y" ar scale="0.1 0.1 0.1" min-camera-orbit="auto auto 1m" max-camera-orbit="auto auto 20m" camera-orbit="180deg auto 1m" exposure="1" animation-name="DollHeadAction" autoplay ar-modes="webxr"
+ >
 
   <!-- Info Feature -->
   <button id="info-icon">
@@ -344,6 +475,74 @@
     <i class="fas fa-play"></i>
   </button>
 
+  <!-- Rules Icon -->
+  <button id="rules-icon">
+    <i class="fas fa-r"></i>
+  </button>
+
+  <!-- Setting Icon -->
+  <button id="setting-icon">
+    <i class="fas fa-gear"></i>
+  </button>
+
+  <!-- Setting Slider -->
+  <div id="settings-popup">
+    <div class="popup-content">
+      <!-- Header -->
+      <div class="popup-header">
+        <h3>Settings</h3>
+        <i class="fa-solid fa-xmark close-icon" id="close-popup"></i>
+      </div>
+
+      <!-- Lighting -->
+      <div class="lighting-control">
+        <label for="exposureSlider">Lighting</label>
+        <input type="range" id="exposureSlider" min="0.1" max="3" step="0.1" value="1">
+        <span id="exposureValue">1</span>
+      </div>
+
+      <!-- Shadow -->
+      <div class="shadow-control">
+        <label for="shadowSlider">Shadow</label>
+        <input type="range" id="shadowSlider" min="0.1" max="2" step="0.1" value="1">
+        <span id="shadowValue">1</span>
+      </div>
+
+      <!-- Animation -->
+      <div class="animation-control">
+        <input type="checkbox" id="animation" checked>
+        <label for="animation">Animation</label>
+      </div>
+
+      <!-- AR Modes -->
+      <div class="ar-control">
+        <label class="ar-label">AR Mode</label>
+        <div class="ar-options">
+          <label class="ar-option">
+            <input type="radio" name="arMode" value="webxr" checked>
+            <span>Browser AR</span>
+          </label>
+          <label class="ar-option">
+            <input type="radio" name="arMode" value="scene-viewer">
+            <span>Android AR</span>
+          </label>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+  <!-- Screenshot -->
+  <button id="screenshot-icon">
+    <i class="fa-solid fa-camera"></i>
+  </button>
+
+  <!-- Game Video (YT) -->
+  <a href="https://www.youtube.com/watch?v=2rl0tlLG2kI&pp=ygUfcmVkIGxpZ3RoIGdyZWVuIGxpZ2h0ICBzZWFzb24gMQ%3D%3D" id="yt-video" target="_blank">
+    <button id="youtube-icon">
+      <i class="fa-brands fa-youtube"></i>
+    </button>
+  </a>
 
   <div class="slider">
     <div class="slides">
@@ -353,6 +552,27 @@
 
       <!-- Mingle -->
       <button class="slide" onclick="switchSrc(this, './models/Mingle', 'Mingle', 'Mingle')" style="background-image: url('./models/Mingle/Mingle.jpg');"></button>
+
+      <!-- Jump Rope -->
+      <button class="slide" onclick="switchSrc(this, './models2/JumpRope', 'JumpRope', 'Jump Rope')" style="background-image: url('./models2/JumpRope/JumpRope.jpeg');"></button>
+
+      <!-- Sky Squid Game -->
+      <button class="slide" onclick="switchSrc(this, './models2/SkySquidGame', 'SkySquidGame', 'Sky Squid Game')" style="background-image: url('./models2/SkySquidGame/SkySquidGame.jpeg');"></button>
+
+      <!-- Hide And Seek Game -->
+      <button class="slide" onclick="switchSrc(this, './models2/HideAndSeek', 'HideAndSeek', 'Hide And Seek')" style="background-image: url('./models2/HideAndSeek/HideAndSeek.jpeg'); background-size: cover;"></button>
+
+      <!-- Dalgona -->
+      <button class="slide" onclick="switchSrc(this, './models2/Dalgona', 'Dalgona', 'Dalgona')" style="background-image: url('./models2/Dalgona/Dalgona.jpeg'); background-size: cover;"></button>
+
+      <!-- Game Lobby -->
+      <button class="slide" onclick="switchSrc(this, './models3/GameLobby', 'GameLobby', 'Game Lobby')" style="background-image: url('./models3/GameLobby/GameLobby.jpeg'); background-size: cover;"></button>
+
+      <!-- Restroom -->
+      <button class="slide" onclick="switchSrc(this, './models4/Restroom', 'Restroom', 'Restroom')" style="background-image: url('./models4/Restroom/Restroom.jpeg'); background-size: cover;"></button>
+
+      <!-- Staircase -->
+      <button class="slide" onclick="switchSrc(this, './models4/Staircase', 'Staircase', 'Staircase')" style="background-image: url('./models4/Staircase/Staircase.jpeg'); background-size: cover;"></button>
 
     </div>
   </div>
@@ -370,31 +590,182 @@ const modelViewer = document.querySelector("model-viewer");
 const infoIcon = document.getElementById("info-icon");
 const infoDisplay = document.getElementById("info-display");
 const musicIcon = document.getElementById("music-icon");
+const rulesIcon = document.getElementById("rules-icon");
+const settingBtn = document.getElementById("setting-icon");
+const youtubeBtn = document.getElementById("yt-video");
+
+const popup = document.getElementById("settings-popup");
+const closeBtn = document.getElementById("close-popup");
+const lightingSlider = document.getElementById("exposureSlider");
+const lightingValue = document.getElementById("exposureValue");
+
+const shadowSlider = document.getElementById("shadowSlider");
+const shadowValue = document.getElementById("shadowValue");
+
+const arRadios = document.querySelectorAll("input[name='arMode']");
+const animation = document.getElementById("animation");
+
+const screenshotBtn = document.getElementById("screenshot-icon");
+
+// Open popup
+settingBtn.addEventListener("click", () => {
+  popup.style.display = "flex";
+  });
+
+// Close popup
+closeBtn.addEventListener("click", () => {
+  popup.style.display = "none";
+});
+
+// Update Lighting
+lightingSlider.addEventListener("input", () => {
+  modelViewer.setAttribute("exposure",lightingSlider.value);
+  lightingValue.textContent = lightingSlider.value;
+});
+
+// Update Shadow
+shadowSlider.addEventListener("input", () => {
+  modelViewer.setAttribute("shadow-intensity",shadowSlider.value);
+  shadowValue.textContent = shadowSlider.value;
+});
+
+// Set AR Mode
+arRadios.forEach(radio => {
+  radio.addEventListener("change",()=>{
+    modelViewer.setAttribute("ar-modes",radio.value);
+  })
+})
+
+// Animation Control
+animation.addEventListener("change",() => {
+  if(animation.checked){
+    modelViewer.play();
+  }else{
+    modelViewer.pause();
+  }
+})
+
+// Screenshot + Share Feature 
+screenshotBtn.addEventListener("click",() => {
+  if(modelViewer.toDataURL){
+    let dataURL = modelViewer.toDataURL("image/png");
+    let link = document.createElement("a");
+    link.href = dataURL;
+    link.download = "Squidverse.png";
+    link.click();
+
+    // Convert DataURL -> Blob
+    fetch(dataURL).then(res => res.blob()).then(blob => {
+      let file = new File([blob], "Squidverse.png",{type:"image/png"});
+      if(navigator.share){
+        navigator.share({
+          files: [file],
+          title: "Don’t miss this! 👀",
+          text: "Check out this cool snapshot!"
+        }).catch(err => console.error("Share failed:",err));
+      } else{
+        alert("Sharing not supported on this browser.");
+      }
+    })
+  }
+})
 
 // Object storing car names and descriptions
 const infoText = {
   "Red Light": {
     title: "Red Light Green Light",
-    description: "• A luxury sports car with a powerful V10 engine.\n• Known for its sleek design and top-tier performance.",
+    description: "• The goal is to reach the finish line first without getting caught moving. \n• When the doll plays music, players can move forward. \n• When the music stops, players must freeze immediately. \n• If anyone is caught moving while the music is off, they are eliminated.",
     music: "./sounds/RedLight.mp3",
-    orbit: "180deg 80deg 1m"
+    orbit: "180deg 80deg 1m",
+    rules: "./rules/RedLight.mp3",
+    ytlink: "https://www.youtube.com/watch?v=2rl0tlLG2kI&pp=ygUfcmVkIGxpZ3RoIGdyZWVuIGxpZ2h0ICBzZWFzb24gMQ%3D%3D",
+    lighting: "1"
   },
   "Mingle": {
     title: "Mingle",
-    description: "• A luxury sports car with a powerful V10 engine.\n• Known for its sleek design and top-tier performance.",
+    description: "• First, all players must stand on the platform. \n• Once the game begins, the platform will start rotating. \n• After some time, a number will be announced. \n• According to that number, players must quickly form a group. \n• Within 30 seconds, the group must enter a room, and the room should be locked. \n• Any players who fail to form a group will be eliminated.",
     music: "./sounds/Mingle.mp3",
-    orbit: "180deg 80deg 0.1m"
+    orbit: "auto auto 0.1m",
+    rules: "./rules/Mingle.mp3",
+    ytlink: "https://www.youtube.com/watch?v=LP04L3rTiLc&pp=ygURbWluZ2xlIHNxdWlkIGdhbWU%3D",
+    lighting: "1.1"
+  },
+  "Jump Rope": {
+    title: "Jump Rope",
+    description: "• A rope bridge is set up using ropes. \n• Players must cross the bridge within 20 minutes. \n• You must decide among yourselves who goes first. \n• Anyone who fails to cross or falls before time runs out is eliminated. \n• Those who reach the other side before 20 minutes are the winners.",
+    music: "./sounds/JumpRope.mp3",
+    orbit: "auto auto 2.1m",
+    rules: "./rules/JumpRope.mp3",
+    ytlink: "https://www.youtube.com/watch?v=7lVp_JW7HIY&pp=ygUOanVtcCByb3BlIGdhbWU%3D",
+    lighting: "1"
+  },
+  "Sky Squid Game": {
+    title: "Sky Squid Game",
+    description: "• Players must cross three towers without falling: Chchoris Tower, Trikon Tower, and Goal Tower. \n• The first round starts at Chchoris Tower. \n• The main objective is to push one or more players down to eliminate them. \n• Only the surviving players move to the next tower (Trikon Tower). \n• The process continues until the Goal Tower. \n• The players who remain on the Goal Tower are declared as winners. \n• If no player falls from a tower within the given time, then all players on that tower will be eliminated.",
+    music: "./sounds/SkySquidGame.mp3",
+    orbit: "auto auto 3m",
+    rules: "./rules/SkySquidGame.mp3",
+    ytlink: "https://www.youtube.com/watch?v=bc831YQUuWg&pp=ygUPc2t5IHNxdWlkIGdhbWUg",
+    lighting: "2.6"
+  },
+  "Hide And Seek": { 
+    title: "Hide And Seek",
+    description: "• Team Blue must either find an escape route within 30 minutes \n• Or stay hidden until the game ends without being caught by Team Red.\n• Team Red must search and eliminate all Team Blue members within 30 minutes.\n• If Team Red fails to eliminate anyone in the given time, they will be eliminated.",
+    music: "./sounds/HideAndSeek.mp3",
+    orbit: "auto auto 2.9m",
+    rules: "./rules/HideAndSeek.mp3",
+    ytlink: "https://www.youtube.com/watch?v=CU-I86h9MKE&pp=ygUkaGlkZSBhbmQgc2VlayAgc3F1aWQgZ2FtZSBmdWxsIHNjZW5l0gcJCbIJAYcqIYzv",
+    lighting: "1.2"
+  },
+  "Dalgona": {
+    title: "Dalgona",
+    description: "• All players gather at their assigned shape. \n• You must carve out the given shape within 10 minutes. \n• If you successfully extract the shape, you win. \n• If the shape breaks, you are eliminated.",
+    music: "./sounds/Dalgona.mp3",
+    orbit: "auto auto 0.1m",
+    rules: "./rules/Dalgona.mp3",
+    ytlink: "https://www.youtube.com/watch?v=-SneJ_7SRQk&pp=ygUYZGFsZ29uYSBtdXNpYyBzcXVpZCBnYW1l",
+    lighting: "1"
+  },
+  "Game Lobby": { 
+    title: "Game Lobby",
+    description: "• It is also known as The Lobby. \n• It is a location where players stay between the Games. \n• The room is rectangular, with tall metal bunk beds lined along the walls.",
+    music: "./sounds/GameLobby.mp3",
+    orbit: "auto auto 0.1m",
+    rules: "",
+    ytlink: "",
+    lighting: "0.6"
+  },
+  "Restroom": { 
+    title: "Restroom",
+    description: "• The restrooms serve as a location for players to eliminate waste.\n• These areas in the game are not equipped with cameras. \n• It creates a space for players to attack each other.",
+    music: "./sounds/Restroom.mp3",
+    orbit: "auto auto 0.1m",
+    rules: "",
+    ytlink: "",
+    lighting: "0.7"
+  },
+  "Staircase": {
+    title: "Staircase",
+    description: "• The stairs, or the main game hall, is a location in Squid Game. \n• It is where the players are transported to the games by ascending the staircases.",
+    music: "./sounds/Staircase.mp3",
+    orbit: "auto auto 1m",
+    rules: "",
+    ytlink: "",
+    lighting: "0.6"
   },
 };
 
+// Load this initially
 let gameMusic = new Audio();
+let rulesMusic = new Audio();
 gameMusic.src = infoText["Red Light"].music;
+rulesMusic.src = infoText["Red Light"].rules;
 let currentGameName = "Red Light";
 
 // Toggle info display with GSAP animation
 infoIcon.addEventListener("click", () => {
   if (infoDisplay.style.display === "none" || !infoDisplay.style.display) {
-    infoDisplay.style.display = "block"; // Ensure it's visible for animation
+    infoDisplay.style.display = "block"; 
     infoDisplay.innerHTML = `<h3 class='carname'">${infoText[currentGameName].title}</h3><p class="carinfo">${infoText[currentGameName].description}</p>`;
     gsap.fromTo(
       infoDisplay,
@@ -427,18 +798,51 @@ infoIcon.addEventListener("click", () => {
         icon.classList.remove('fa-pause');
         icon.classList.add('fa-play');
         gameMusic.pause();
-    }
+    } 
   });
 
+  // If music ends then show play icon
+  gameMusic.addEventListener("ended",() => {
+    const icon = musicIcon.querySelector('i');
+    icon.classList.remove("fa-pause");
+    icon.classList.add("fa-play");
+  })
+
+  // Rules Icon
+  rulesIcon.addEventListener("click",()=>{
+    rulesMusic.play();
+  })
 
 // Switch game model and update
 window.switchSrc = (element, foldername, name, carName) => {
   const base = `/${foldername}/${name}`;
   modelViewer.src = base + ".glb";
   modelViewer.poster = base + ".png";
+  modelViewer.poster = base + ".png";
   gameMusic.src = infoText[carName].music;
-  modelViewer.cameraOrbit = infoText[carName].orbit;
+  rulesMusic.src = infoText[carName].rules;
+  youtubeBtn.href = infoText[carName].ytlink;
+  modelViewer.setAttribute("camera-orbit",infoText[carName].orbit);
+  modelViewer.setAttribute("exposure",infoText[carName].lighting);
+  lightingValue.textContent = infoText[carName].lighting;
+  lightingSlider.value = infoText[carName].lighting;
 
+  // Check that Youtube Link and Rules exists or not
+  if(infoText[carName].ytlink ==="" && infoText[carName].rules === ""){
+    youtubeBtn.style.display = "none";
+    rulesIcon.style.display = "none";
+  } else{
+    youtubeBtn.style.display = "block";
+    rulesIcon.style.display = "block";
+  }
+
+  // Switch from pause to play icon
+  const icon = musicIcon.querySelector('i');
+  if(icon.classList.contains('fa-pause')){
+    icon.classList.remove("fa-pause");
+    icon.classList.add("fa-play");
+  }
+ 
   currentGameName = carName;
   
   const slides = document.querySelectorAll(".slide");
@@ -453,7 +857,7 @@ window.switchSrc = (element, foldername, name, carName) => {
       duration: 0.3,
       ease: "power1.in",
       onComplete: () => {
-        infoDisplay.innerHTML = `<h3>${infoText[currentGameName].title}</h3><p>${infoText[currentGameName].description}</p>`;
+        infoDisplay.innerHTML = `<h3 class='carname'">${infoText[currentGameName].title}</h3><p class="carinfo">${infoText[currentGameName].description}</p>`;;
         gsap.fromTo(
           infoDisplay,
           { y: 10, opacity: 0 },
