@@ -81,8 +81,8 @@
     /* Info Box */
     #info-display {
       position: absolute;
-      top: 60px;
-      right: 70px;
+      top: 50px;
+      right: 75px;
       color: #333;
       font-family: 'Roboto', sans-serif;
       font-size: 16px;
@@ -174,17 +174,17 @@
     }
 
   /* Responsive for Tablets */
-  @media (max-width: 768px) {
+  @media (max-width: 730px) {
       model-viewer {
         height: 80vh;
       }
 
       /* Info box positioning */
       #info-display {
-        top: 71px;
-        right: 20px;
+        top: 68px;
+        right: 14px;
         font-size: 14px;
-        padding: 12px;
+        width: 95%;
       }
 
       /* Info icon size */
@@ -207,7 +207,7 @@
       }
 
       div#info-display h3.carname{
-       font-size: 20px;
+       font-size: 23px;
       }
 
      div#info-display p.carinfo{
@@ -226,15 +226,15 @@
       /* Info box and icon for very small screens */
       #info-display {
         top: 66px;
-        right: 16px;
-        width: 85%;
+        right: 10px;
+        width: 95%;
         font-size: 12px;
       }
 
       #info-icon, #music-icon, #rules-icon, #setting-icon, #youtube-icon, #screenshot-icon {
-        width: 40px;
-        height: 40px;
-        font-size: 14px;
+        width: 45px;
+        height: 45px;
+        font-size: 17px;
       }
 
       /* Slider button size for very small screens */
@@ -247,15 +247,15 @@
       /* Adjust slider for very small screens */
       .slider {
         bottom: 4px;
-        margin: 0 18px;  /* Todo to be 0px 10px */
+        margin: 0 18px;  
       }
 
       div#info-display h3.carname{
-      font-size: 21px;
+       font-size: 22px;
       }
 
       div#info-display p.carinfo{
-      font-size: 16px;
+       font-size: 16px;
       }
 
   }
@@ -330,23 +330,24 @@
     display: none;
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0,0,0,0.4); /* lighter backdrop */
+    background: rgba(0,0,0,0.6); 
     align-items: center;
     justify-content: center;
     z-index: 1000;
   }
 
   .popup-content {
-    background: linear-gradient(135deg, #F8759A, #EB0A62); /* lighter pink tone */
-    padding: 22px;
+    background: linear-gradient(135deg, #cc527d, #ea497f);
+    padding: 24px;
     border-radius: 18px;
     text-align: center;
-    width: 330px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+    width: 340px;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.45);
     font-family: "Poppins", sans-serif;
     color: #fff;
   }
 
+  /* Header */
   .popup-header {
     display: flex;
     justify-content: space-between;
@@ -354,43 +355,48 @@
   }
 
   .popup-header h3 {
-    font-size: 21px;
-    font-weight: 600;
+    font-size: 22px;
+    font-weight: 500;
     color: #fff;
     letter-spacing: 1px;
+    margin-left: 4px;
   }
 
   .close-icon {
     font-size: 22px;
     cursor: pointer;
     color: #fff;
-    transition: transform 0.2s, color 0.3s;
-
+    background: linear-gradient(135deg, #F75C7E, #EB0A62); /* soft pink bg */
+    padding: 4px 8px;
+    border-radius: 50%;
+    transition: transform 0.2s, background 0.3s;
   }
   .close-icon:hover {
     transform: scale(1.2);
-    color: #f5f0f0;
+    background: linear-gradient(135deg, #EB0A62, #C1094F); /* darker hover */
   }
 
   /* Controls */
-  .lighting-control, .shadow-control, .animation-control {
+  .lighting-control, .shadow-control, .animation-control, .scale-control, .camera-control {
     display: flex;
     align-items: center;
     gap: 12px;
-    margin: 10px 0;
-    background: rgba(255,255,255,0.2);
-    padding: 10px 12px;
+    margin: 12px 0;
+    background: rgba(255,255,255,0.08); /* subtle transparency */
+    padding: 10px 14px;
     border-radius: 12px;
   }
 
   .lighting-control label,
-  .shadow-control label {
+  .shadow-control label,
+  .scale-control label,
+  .camera-control label {
     font-weight: 500;
-    color: #fff;
+    color: #ffe6f0; /* softer text */
   }
 
   input[type="range"] {
-    accent-color: #ffccd9; /* light pink slider */
+    accent-color: #F75C7E; /* subtle pink highlight */
     cursor: pointer;
   }
 
@@ -401,7 +407,7 @@
 
   .animation-control input[type="checkbox"] {
     transform: scale(1.2);
-    accent-color: #ffccd9;
+    accent-color: #F75C7E;
     cursor: pointer;
   }
 
@@ -409,8 +415,8 @@
   .ar-control {
     border-radius: 12px;
     padding: 14px;
-    background: rgba(255,255,255,0.2); 
-    margin-top: 14px;
+    background: rgba(255,255,255,0.08);
+    margin-top: 16px;
   }
 
   .ar-label {
@@ -424,12 +430,13 @@
   .ar-options {
     display: flex;
     flex-direction: column;
+    gap: 6px;
   }
 
   .ar-option {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 8px;
     cursor: pointer;
     padding: 8px 12px;
     border-radius: 8px;
@@ -437,11 +444,11 @@
   }
 
   .ar-option:hover {
-    background: rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.15);
   }
 
   .ar-option input[type="radio"] {
-    accent-color: #ffccd9; 
+    accent-color: #F75C7E; 
     transform: scale(1.2);
     cursor: pointer;
   }
@@ -455,12 +462,11 @@
 </head>
 <body>
 
-  <!-- Todo: Automatic Sound should play when switched, Increase Button Size on mobile, info box, improve setting ui  -->
+  <!-- Todo: Automatic Sound should play when switched, Increase Button Size on mobile, info box -->
 
   <!-- https://gltf-viewer.donmccurdy.com/ -->
 
-  <model-viewer src="./models/RedLight/RedLight.glb" style="width: 100vw; height: 100vh;" camera-controls shadow-intensity="1" touch-action="pan-y" ar scale="0.1 0.1 0.1" ar-scale="fixed"
- min-camera-orbit="auto auto 1m" max-camera-orbit="auto auto 20m" camera-orbit="180deg auto 1m" exposure="1" animation-name="DollHeadAction" autoplay ar-modes="webxr"
+  <model-viewer src="./models/RedLight/RedLight.glb" style="width: 100vw; height: 100vh;" camera-controls shadow-intensity="1" touch-action="pan-y" ar scale="0.1 0.1 0.1" min-camera-orbit="auto auto 1m" max-camera-orbit="auto auto 20m" camera-orbit="180deg auto 1m" exposure="1" animation-name="DollHeadAction" autoplay ar-modes="webxr"
  >
 
   <!-- Info Feature -->
@@ -492,6 +498,20 @@
       <div class="popup-header">
         <h3>Settings</h3>
         <i class="fa-solid fa-xmark close-icon" id="close-popup"></i>
+      </div>
+
+      <!-- Scale -->
+      <div class="scale-control">
+        <label for="scaleSlider">Scale</label>
+        <input type="range" id="scaleSlider" min="0.01" max="0.5" step="0.01" value="0.1">
+        <span id="scaleValue">0.1</span>
+      </div>
+      
+      <!-- Camera -->
+      <div class="camera-control">
+        <label for="cameraSlider">Zoom</label>
+        <input type="range" id="cameraSlider" min="0.1" max="20" step="0.1" value="1">
+        <span id="cameraValue">1</span>
       </div>
 
       <!-- Lighting -->
@@ -596,6 +616,13 @@ const youtubeBtn = document.getElementById("yt-video");
 
 const popup = document.getElementById("settings-popup");
 const closeBtn = document.getElementById("close-popup");
+
+const scaleSlider = document.getElementById("scaleSlider");
+const scaleValue = document.getElementById("scaleValue");
+
+const cameraSlider = document.getElementById("cameraSlider");
+const cameraValue = document.getElementById("cameraValue");
+
 const lightingSlider = document.getElementById("exposureSlider");
 const lightingValue = document.getElementById("exposureValue");
 
@@ -607,16 +634,6 @@ const animation = document.getElementById("animation");
 
 const screenshotBtn = document.getElementById("screenshot-icon");
 
-modelViewer.addEventListener('before-enter-ar', () => {
-  // Change scale before AR session starts
-  modelViewer.setAttribute('scale', '0.01 0.01 0.01');
-});
-
-modelViewer.addEventListener('exit-ar', () => {
-  // Restore scale when exiting AR
-  modelViewer.setAttribute('scale', '0.1 0.1 0.1');
-});
-
 // Open popup
 settingBtn.addEventListener("click", () => {
   popup.style.display = "flex";
@@ -625,6 +642,18 @@ settingBtn.addEventListener("click", () => {
 // Close popup
 closeBtn.addEventListener("click", () => {
   popup.style.display = "none";
+});
+
+// Update Scaling
+scaleSlider.addEventListener("input", () => {
+  modelViewer.setAttribute("scale",`${scaleSlider.value} ${scaleSlider.value} ${scaleSlider.value}`);
+  scaleValue.textContent = scaleSlider.value;
+});
+
+// Update Camera
+cameraSlider.addEventListener("input", () => {
+  modelViewer.setAttribute("camera-orbit", `180deg auto ${cameraSlider.value}m`);
+  cameraValue.textContent = cameraSlider.value;
 });
 
 // Update Lighting
@@ -848,11 +877,11 @@ window.switchSrc = (element, foldername, name, carName) => {
 
   // Switch from pause to play icon
   const icon = musicIcon.querySelector('i');
-  if(icon.classList.contains('fa-pause')){
-    icon.classList.remove("fa-pause");
-    icon.classList.add("fa-play");
-  }
- 
+
+  icon.classList.remove("fa-play");
+  icon.classList.add("fa-pause");
+  gameMusic.play();
+
   currentGameName = carName;
   
   const slides = document.querySelectorAll(".slide");
