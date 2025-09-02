@@ -606,15 +606,22 @@ const animation = document.getElementById("animation");
 
 const screenshotBtn = document.getElementById("screenshot-icon");
 
-// Set scale in AR
-modelViewer.addEventListener("enter-ar",() => {
-  modelViewer.setAttribute("scale","0.01 0.01 0.01");
-})
+modelViewer.addEventListener("enter-ar", () => {
+  if (modelViewer.model) {
+    modelViewer.model.scale.set(0.01, 0.01, 0.01);
+  } else {
+    modelViewer.addEventListener("load", () => {
+      modelViewer.model.scale.set(0.01, 0.01, 0.01);
+    });
+  }
+});
 
-// Set scale in 3D
-modelViewer.addEventListener("exit-ar",() => {
-  modelViewer.setAttribute("scale","0.1 0.1 0.1");
-})
+modelViewer.addEventListener("exit-ar", () => {
+  if (modelViewer.model) {
+    modelViewer.model.scale.set(0.1, 0.1, 0.1);
+  }
+});
+
 
 // Open popup
 settingBtn.addEventListener("click", () => {
