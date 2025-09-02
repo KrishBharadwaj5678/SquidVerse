@@ -173,6 +173,155 @@
      line-height: 1.6;
     }
 
+    /* Setting */
+    #settings-popup {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.6); 
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    .popup-content {
+      background: linear-gradient(135deg, #cc527d, #ea497f);
+      padding: 24px 24px 10px 24px;
+      border-radius: 18px;
+      text-align: center;
+      width: 340px;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.45);
+      font-family: "Poppins", sans-serif;
+      color: #fff;
+    }
+
+    /* Header */
+    .popup-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .popup-header h3 {
+      font-size: 22px;
+      font-weight: 500;
+      color: #fff;
+      letter-spacing: 1px;
+      margin-left: 4px;
+    }
+
+    .close-icon {
+      font-size: 22px;
+      cursor: pointer;
+      color: #fff;
+      background: linear-gradient(135deg, #F75C7E, #EB0A62); 
+      padding: 4px 8px;
+      border-radius: 50%;
+      transition: transform 0.2s, background 0.3s;
+    }
+    .close-icon:hover {
+      transform: scale(1.2);
+      background: linear-gradient(135deg, #EB0A62, #C1094F); 
+    }
+
+    /* Controls */
+    .lighting-control, .shadow-control, .animation-control, .scale-control, .camera-control {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 12px 0;
+      background: rgba(255,255,255,0.08); 
+      padding: 10px 14px;
+      border-radius: 12px;
+    }
+
+    .lighting-control label,
+    .shadow-control label,
+    .scale-control label,
+    .camera-control label {
+      font-weight: 500;
+      color: #ffe6f0; 
+    }
+
+    input[type="range"] {
+      accent-color: #F75C7E; 
+      cursor: pointer;
+    }
+
+    .animation-control label {
+      font-weight: 500;
+      color: #fff;
+    }
+
+    .animation-control input[type="checkbox"] {
+      transform: scale(1.2);
+      accent-color: #F75C7E;
+      cursor: pointer;
+    }
+
+    /* AR Mode */
+    .ar-control {
+      border-radius: 12px;
+      padding: 14px;
+      background: rgba(255,255,255,0.08);
+      margin-top: 16px;
+    }
+
+    .ar-label {
+      font-size: 17px;
+      font-weight: 500;
+      margin-bottom: 8px;
+      display: block;
+      color: #fff;
+    }
+
+    .ar-options {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .ar-option {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: background 0.3s ease;
+    }
+
+    .ar-option:hover {
+      background: rgba(255,255,255,0.15);
+    }
+
+    .ar-option input[type="radio"] {
+      accent-color: #F75C7E; 
+      transform: scale(1.2);
+      cursor: pointer;
+    }
+
+    .ar-option span {
+      font-size: 15px;
+      color: #fff;
+    }
+
+    /* AR Button */
+    .ar-btn {
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin: 14px 0;
+      border-radius: 6px;
+      padding: 12px 20px;
+      background: linear-gradient(135deg, #cd1e61, #c9356b);  
+      transition: all 0.2s;
+    }
+
+    .ar-btn:hover {
+      background: linear-gradient(135deg, #cf3569, #d3165b); 
+      transform: scale(1.05);
+    }
+
   /* Responsive for Tablets */
   @media (max-width: 730px) {
       model-viewer {
@@ -218,12 +367,10 @@
 
   /* Responsive for Mobiles */
   @media (max-width: 480px) {
-      /* Adjust model-viewer further for small screens */
       model-viewer {
         height: 60vh;
       }
 
-      /* Info box and icon for very small screens */
       #info-display {
         top: 66px;
         right: 10px;
@@ -237,16 +384,14 @@
         font-size: 17px;
       }
 
-      /* Slider button size for very small screens */
       .slide {
-        width: 60px;
-        height: 60px;
+        width: 70px;
+        height: 70px;
         margin-right: 10px;
       }
 
-      /* Adjust slider for very small screens */
       .slider {
-        bottom: 4px;
+        bottom: 10px;
         margin: 0 18px;  
       }
 
@@ -260,209 +405,11 @@
 
   }
 
-  /* Styling of AR Button */
-
-  .transparent {
-    background-color: transparent;
-    border-radius: 50%;
-    border: none;
-    position: relative;
-    width: 65px;
-    height: 65px;
-    padding: 10px;
-    cursor: pointer;
-    z-index: 10; /* Ensure it's above other elements */
-  }
-
-  .ar-icon {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-  }
-
-  /* Responsive Design for AR Button (Laptops/PC) */
-  @media (max-width: 1500px) {
-    /* Adjust size and positioning for mobile */
-    .transparent {
-      padding: 10px;
-    }
-
-    .ar-icon {
-      width: 73px; /* Smaller size for mobile */
-      height: 73px;
-      left: 0px;
-      top: -3.3px;
-    }
-  }
-
-  /* Responsive Design for AR Button (Tablets) */
-  @media (max-width: 768px) {
-    /* Adjust size and positioning for tablets */
-    .transparent {
-      padding: 12px;
-    }
-
-    .ar-icon {
-      width: 66px; /* Slightly smaller for tablets */
-      height: 66px;
-      left: 0px;
-      top: -1px;
-    }
-  }
-
-  /* Responsive Design for AR Button (Mobiles) */
-  @media (max-width: 480px) {
-    /* Adjust size and positioning for mobile */
-    .transparent {
-      padding: 10px;
-    }
-
-    .ar-icon {
-      width: 57px; /* Smaller size for mobile */
-      height: 57px;
-      left: 0px;
-      top: 0px;
-    }
-  }
-
-  /* Setting */
-  #settings-popup {
-    display: none;
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0,0,0,0.6); 
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-  }
-
-  .popup-content {
-    background: linear-gradient(135deg, #cc527d, #ea497f);
-    padding: 24px;
-    border-radius: 18px;
-    text-align: center;
-    width: 340px;
-    box-shadow: 0 8px 28px rgba(0,0,0,0.45);
-    font-family: "Poppins", sans-serif;
-    color: #fff;
-  }
-
-  /* Header */
-  .popup-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .popup-header h3 {
-    font-size: 22px;
-    font-weight: 500;
-    color: #fff;
-    letter-spacing: 1px;
-    margin-left: 4px;
-  }
-
-  .close-icon {
-    font-size: 22px;
-    cursor: pointer;
-    color: #fff;
-    background: linear-gradient(135deg, #F75C7E, #EB0A62); /* soft pink bg */
-    padding: 4px 8px;
-    border-radius: 50%;
-    transition: transform 0.2s, background 0.3s;
-  }
-  .close-icon:hover {
-    transform: scale(1.2);
-    background: linear-gradient(135deg, #EB0A62, #C1094F); /* darker hover */
-  }
-
-  /* Controls */
-  .lighting-control, .shadow-control, .animation-control, .scale-control, .camera-control {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin: 12px 0;
-    background: rgba(255,255,255,0.08); /* subtle transparency */
-    padding: 10px 14px;
-    border-radius: 12px;
-  }
-
-  .lighting-control label,
-  .shadow-control label,
-  .scale-control label,
-  .camera-control label {
-    font-weight: 500;
-    color: #ffe6f0; /* softer text */
-  }
-
-  input[type="range"] {
-    accent-color: #F75C7E; /* subtle pink highlight */
-    cursor: pointer;
-  }
-
-  .animation-control label {
-    font-weight: 500;
-    color: #fff;
-  }
-
-  .animation-control input[type="checkbox"] {
-    transform: scale(1.2);
-    accent-color: #F75C7E;
-    cursor: pointer;
-  }
-
-  /* AR Mode */
-  .ar-control {
-    border-radius: 12px;
-    padding: 14px;
-    background: rgba(255,255,255,0.08);
-    margin-top: 16px;
-  }
-
-  .ar-label {
-    font-size: 17px;
-    font-weight: 500;
-    margin-bottom: 8px;
-    display: block;
-    color: #fff;
-  }
-
-  .ar-options {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-
-  .ar-option {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    cursor: pointer;
-    padding: 8px 12px;
-    border-radius: 8px;
-    transition: background 0.3s ease;
-  }
-
-  .ar-option:hover {
-    background: rgba(255,255,255,0.15);
-  }
-
-  .ar-option input[type="radio"] {
-    accent-color: #F75C7E; 
-    transform: scale(1.2);
-    cursor: pointer;
-  }
-
-  .ar-option span {
-    font-size: 15px;
-    color: #fff;
-  }
-
   </style>
 </head>
 <body>
 
-  <!-- Todo: Automatic Sound should play when switched, Increase Button Size on mobile, info box -->
+  <!-- Todo: Split css,js in different file -->
 
   <!-- https://gltf-viewer.donmccurdy.com/ -->
 
@@ -548,6 +495,10 @@
           </label>
         </div>
       </div>
+
+      <button slot="ar-button" class="ar-btn">
+        Enter AR
+      </button>
       
     </div>
   </div>
@@ -597,20 +548,14 @@
     </div>
   </div>
 
-  <button slot="ar-button" 
-    style="background-color: transparent; border-radius: 50%; border: none; position: absolute; top: 60px; left: 10px; padding: 10px; cursor: pointer;" 
-    class="transparent">
-  <img src="./assets/arIcon.png" width="40px" height="40px" class="ar-icon">
-  </button>
-
   </model-viewer>
 
 <script type="module">
 const modelViewer = document.querySelector("model-viewer");
-const infoIcon = document.getElementById("info-icon");
+const infoBtn = document.getElementById("info-icon");
 const infoDisplay = document.getElementById("info-display");
-const musicIcon = document.getElementById("music-icon");
-const rulesIcon = document.getElementById("rules-icon");
+const musicBtn = document.getElementById("music-icon");
+const rulesBtn = document.getElementById("rules-icon");
 const settingBtn = document.getElementById("setting-icon");
 const youtubeBtn = document.getElementById("yt-video");
 
@@ -709,7 +654,7 @@ screenshotBtn.addEventListener("click",() => {
   }
 })
 
-// Object storing car names and descriptions
+// Squid Game Database
 const infoText = {
   "Red Light": {
     title: "Red Light Green Light",
@@ -802,7 +747,7 @@ rulesMusic.src = infoText["Red Light"].rules;
 let currentGameName = "Red Light";
 
 // Toggle info display with GSAP animation
-infoIcon.addEventListener("click", () => {
+infoBtn.addEventListener("click", () => {
   if (infoDisplay.style.display === "none" || !infoDisplay.style.display) {
     infoDisplay.style.display = "block"; 
     infoDisplay.innerHTML = `<h3 class='carname'">${infoText[currentGameName].title}</h3><p class="carinfo">${infoText[currentGameName].description}</p>`;
@@ -824,33 +769,33 @@ infoIcon.addEventListener("click", () => {
   }
 });
 
-  // Music Icon Switcher
-  musicIcon.addEventListener('click', function() {
-    const icon = this.querySelector('i');
-    
-    // Toggle between icons
-    if (icon.classList.contains('fa-play')) {
-        icon.classList.remove('fa-play');
-        icon.classList.add('fa-pause');
-        gameMusic.play();
-    } else if (icon.classList.contains('fa-pause')) {
-        icon.classList.remove('fa-pause');
-        icon.classList.add('fa-play');
-        gameMusic.pause();
-    } 
-  });
+// Music Icon Switcher
+musicBtn.addEventListener('click', function() {
+  const icon = this.querySelector('i');
+  
+  // Toggle between icons
+  if (icon.classList.contains('fa-play')) {
+      icon.classList.remove('fa-play');
+      icon.classList.add('fa-pause');
+      gameMusic.play();
+  } else if (icon.classList.contains('fa-pause')) {
+      icon.classList.remove('fa-pause');
+      icon.classList.add('fa-play');
+      gameMusic.pause();
+  } 
+});
 
-  // If music ends then show play icon
-  gameMusic.addEventListener("ended",() => {
-    const icon = musicIcon.querySelector('i');
-    icon.classList.remove("fa-pause");
-    icon.classList.add("fa-play");
-  })
+// If music ends then show play icon
+gameMusic.addEventListener("ended",() => {
+  const icon = musicBtn.querySelector('i');
+  icon.classList.remove("fa-pause");
+  icon.classList.add("fa-play");
+})
 
-  // Rules Icon
-  rulesIcon.addEventListener("click",()=>{
-    rulesMusic.play();
-  })
+// Rules Icon
+rulesBtn.addEventListener("click",()=>{
+  rulesMusic.play();
+})
 
 // Switch game model and update
 window.switchSrc = (element, foldername, name, carName) => {
@@ -869,14 +814,14 @@ window.switchSrc = (element, foldername, name, carName) => {
   // Check that Youtube Link and Rules exists or not
   if(infoText[carName].ytlink ==="" && infoText[carName].rules === ""){
     youtubeBtn.style.display = "none";
-    rulesIcon.style.display = "none";
+    rulesBtn.style.display = "none";
   } else{
     youtubeBtn.style.display = "block";
-    rulesIcon.style.display = "block";
+    rulesBtn.style.display = "block";
   }
 
   // Switch from pause to play icon
-  const icon = musicIcon.querySelector('i');
+  const icon = musicBtn.querySelector('i');
 
   icon.classList.remove("fa-play");
   icon.classList.add("fa-pause");
