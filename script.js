@@ -205,7 +205,7 @@ let currentGameName = "Red Light";
 infoBtn.addEventListener("click", () => {
   if (infoDisplay.style.display === "none" || !infoDisplay.style.display) {
     infoDisplay.style.display = "block"; 
-    infoDisplay.innerHTML = `<h3 class='gameName'">${infoText[currentGameName].title}</h3><p class="carinfo">${infoText[currentGameName].description}</p>`;
+    infoDisplay.innerHTML = `<h3 class='gameName'">${infoText[currentGameName].title}</h3><p class="gameinfo">${infoText[currentGameName].description}</p>`;
     gsap.fromTo(
       infoDisplay,
       { y: -20, opacity: 0 },
@@ -296,7 +296,7 @@ window.switchSrc = (element, foldername, name, gameName) => {
       duration: 0.3,
       ease: "power1.in",
       onComplete: () => {
-        infoDisplay.innerHTML = `<h3 class='gameName'">${infoText[currentGameName].title}</h3><p class="carinfo">${infoText[currentGameName].description}</p>`;;
+        infoDisplay.innerHTML = `<h3 class='gameName'">${infoText[currentGameName].title}</h3><p class="gameinfo">${infoText[currentGameName].description}</p>`;;
         gsap.fromTo(
           infoDisplay,
           { y: 10, opacity: 0 },

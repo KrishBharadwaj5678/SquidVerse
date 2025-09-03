@@ -145,7 +145,7 @@ div#info-display h3.gameName{
  font-size: 22px;
 }
 
-div#info-display p.carinfo{
+div#info-display p.gameinfo{
  font-size: 17px;
  line-height: 1.6;
 }
@@ -334,7 +334,7 @@ input[type="range"] {
    font-size: 23px;
   }
 
-  div#info-display p.carinfo{
+  div#info-display p.gameinfo{
    font-size: 17px;
   }
 }
@@ -373,7 +373,7 @@ input[type="range"] {
    font-size: 22px;
   }
 
-  div#info-display p.carinfo{
+  div#info-display p.gameinfo{
    font-size: 16px;
   }
 
