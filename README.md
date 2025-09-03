@@ -2,6 +2,8 @@
 
 **SquidVerse** is an interactive 3D platform that brings *Squid Game* mini-games to life! Explore detailed 3D models, play games virtually using AR, and much more in this immersive experience. 🚀
 
+![SquidVerse](https://github.com/KrishBharadwaj5678/SquidVerse/raw/main/SquidVerseDemo.png)
+
 ## Features ✨
 
 | **Feature**                      | **Description**                                                        |
