@@ -497,9 +497,9 @@
       </div>
 
       <button slot="ar-button" class="ar-btn">
-        Enter AR
+       Enter AR
       </button>
-      
+
     </div>
   </div>
 
@@ -548,6 +548,10 @@
     </div>
   </div>
 
+  <!-- <button slot="ar-button" class="ar-btn">
+    Enter AR
+  </button> -->
+
   </model-viewer>
 
 <script type="module">
@@ -578,6 +582,13 @@ const arRadios = document.querySelectorAll("input[name='arMode']");
 const animation = document.getElementById("animation");
 
 const screenshotBtn = document.getElementById("screenshot-icon");
+
+const arBtn = document.querySelector(".ar-btn");
+
+// Activate AR
+arBtn.addEventListener("click",() => {
+  modelViewer.activateAR();
+})
 
 // Open popup
 settingBtn.addEventListener("click", () => {
