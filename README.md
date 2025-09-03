@@ -1,38 +1,38 @@
-# Squidverse 🎮
+# SquidVerse 🎮
 
-**Squidverse** is an interactive 3D platform that brings *Squid Game* mini-games to life! Explore detailed 3D models, play games virtually using AR, and much more in this immersive experience.
+**SquidVerse** is an interactive 3D platform that brings *Squid Game* mini-games to life! Explore detailed 3D models, play games virtually using AR, and much more in this immersive experience. 🚀
 
 ## Features ✨
 
-| **Feature**                      | **Description**                                                      |
-| -------------------------------- | -------------------------------------------------------------------- |
-| **Interactive 3D Models**        | Rotate, zoom, and scale 3D models of *Squid Game* environments.      |
-| **Game Rules Information**       | Access quick game rules through an info button.                      |
-| **Background Music & Narration** | Listen to music and narrated game rules for an immersive experience. |
-| **YouTube Integration**          | Watch *Squid Game* episodes and game tutorials directly on YouTube.  |
-| **Screenshot Capture**           | Take and share screenshots of your 3D explorations.                  |
-| **Settings Panel**               | Adjust scale, lighting, zoom, and more with customizable settings.   |
-| **Augmented Reality (AR)**       | Place 3D models of games in your environment using AR.               |
+| **Feature**                      | **Description**                                                        |
+| -------------------------------- | --------------------------------------------------------------------   |
+| 🌀 **Interactive 3D Models**        | Rotate, zoom, and scale 3D models of *Squid Game* environments.     |
+| 📜 **Game Rules Information**       | Access quick game rules through an info panel.                      |
+| 🎶 **Background Music & Narration** | Listen to music and narrated game rules for an immersive experience. |
+| 📸 **Screenshot Capture**           | Take and share screenshots of your 3D explorations.                  |
+| ⚙️ **Settings Panel**               | Adjust scale, lighting, zoom, and more with customizable settings.   |
+| 📱 **Augmented Reality (AR)**       | Place 3D models of games in your environment using AR.               |
+| 🎥 **YouTube Integration**          | Watch *Squid Game* game tutorials directly on YouTube.               |
 
 ## Tech Stack ⚙️
 
 | **Technology**    | **Description**                                                                         |
 | ----------------- | --------------------------------------------------------------------------------------- |
-| **HTML**          | Standard markup language for structuring the website.                                   |
-| **CSS**           | For styling the website and ensuring responsiveness.                                    |
-| **JavaScript**    | Programming language for website functionality and interactivity.                       |
-| **Model-Viewer**  | For displaying and interacting with 3D models in the browser.                           |
-| **WebXR API**     | For supporting AR and VR experiences.                                                   |
-| **Web Share API** | For enabling users to share images.                                                     |
+| 🌐 **HTML**          | Standard markup language for structuring the website.                                   |
+| 🎨 **CSS**           | For styling the website and ensuring responsiveness.                                    |
+| 💻 **JavaScript**    | Programming language for website functionality and interactivity.                       |
+| 🖼️ **Model-Viewer**  | For displaying and interacting with 3D models in the browser.                           |
+| 🕶️ **WebXR API**     | For supporting AR experiences.                                                          |
+| 📤 **Web Share API** | For enabling users to share images.                                                     |
 
 ## Installation 🛠️
 
-To run Squidverse locally, follow these steps:
+To run SquidVerse locally, follow these steps:
 
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/squidverse.git
+   git clone https://github.com/KrishBharadwaj5678/SquidVerse.git
    ```
 
 2. Navigate to the project directory:
@@ -43,12 +43,14 @@ To run Squidverse locally, follow these steps:
    
 3. Open the app in your browser.
 
+---
+
 ## Contributing 🤝
 
 Want to contribute? Here's how:
 
-1. Fork the repository.
-2. Create a new branch (`git checkout -b feature-name`).
-3. Make your changes and commit them (`git commit -am 'Add feature-name'`).
-4. Push to your branch (`git push origin feature-name`).
-5. Submit a pull request to merge into the main branch.
+1. 🍴 Fork the repository.
+2. 🌿 Create a new branch (`git checkout -b feature-name`).
+3. ✍️ Make your changes and commit them (`git commit -am 'Add feature-name'`).
+4. 🚀 Push to your branch (`git push origin feature-name`).
+5. 🔄 Submit a pull request to merge into the main branch.
