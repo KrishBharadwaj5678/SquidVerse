@@ -12,9 +12,9 @@
 | 📜 **Game Rules Information**       | Access quick game rules through an info panel.                      |
 | 🎶 **Background Music & Narration** | Listen to music and narrated game rules for an immersive experience. |
 | 📸 **Screenshot Capture**           | Take and share screenshots of your 3D explorations.                  |
+| 🎥 **YouTube Integration**          | Watch *Squid Game* game tutorials directly on YouTube.               |
 | ⚙️ **Settings Panel**               | Adjust scale, lighting, zoom, and more with customizable settings.   |
 | 📱 **Augmented Reality (AR)**       | Place 3D models of games in your environment using AR.               |
-| 🎥 **YouTube Integration**          | Watch *Squid Game* game tutorials directly on YouTube.               |
 
 ## Tech Stack ⚙️
 
