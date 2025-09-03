@@ -141,7 +141,7 @@ model-viewer {
   border: 3px solid #E9659B;
 }
 
-div#info-display h3.carname{
+div#info-display h3.gameName{
  font-size: 22px;
 }
 
@@ -291,7 +291,6 @@ input[type="range"] {
   margin: 14px 0;
   border-radius: 6px;
   padding: 12px 20px;
-  /* background: linear-gradient(135deg, #cd1e61, #c9356b);   */
   background: linear-gradient(135deg, #e91e63, #c2185b);
   transition: all 0.2s;
 }
@@ -331,7 +330,7 @@ input[type="range"] {
     margin: 0 20px;
   }
 
-  div#info-display h3.carname{
+  div#info-display h3.gameName{
    font-size: 23px;
   }
 
@@ -370,11 +369,15 @@ input[type="range"] {
     margin: 0 18px;  
   }
 
-  div#info-display h3.carname{
+  div#info-display h3.gameName{
    font-size: 22px;
   }
 
   div#info-display p.carinfo{
    font-size: 16px;
+  }
+
+  .popup-header h3{
+    font-size: 22.2px;
   }
 }

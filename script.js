@@ -205,7 +205,7 @@ let currentGameName = "Red Light";
 infoBtn.addEventListener("click", () => {
   if (infoDisplay.style.display === "none" || !infoDisplay.style.display) {
     infoDisplay.style.display = "block"; 
-    infoDisplay.innerHTML = `<h3 class='carname'">${infoText[currentGameName].title}</h3><p class="carinfo">${infoText[currentGameName].description}</p>`;
+    infoDisplay.innerHTML = `<h3 class='gameName'">${infoText[currentGameName].title}</h3><p class="carinfo">${infoText[currentGameName].description}</p>`;
     gsap.fromTo(
       infoDisplay,
       { y: -20, opacity: 0 },
@@ -253,21 +253,21 @@ rulesBtn.addEventListener("click",()=>{
 })
 
 // Switch game model and update
-window.switchSrc = (element, foldername, name, carName) => {
+window.switchSrc = (element, foldername, name, gameName) => {
   const base = `/${foldername}/${name}`;
   modelViewer.src = base + ".glb";
   modelViewer.poster = base + ".png";
   modelViewer.poster = base + ".png";
-  gameMusic.src = infoText[carName].music;
-  rulesMusic.src = infoText[carName].rules;
-  youtubeBtn.href = infoText[carName].ytlink;
-  modelViewer.setAttribute("camera-orbit",infoText[carName].orbit);
-  modelViewer.setAttribute("exposure",infoText[carName].lighting);
-  lightingValue.textContent = infoText[carName].lighting;
-  lightingSlider.value = infoText[carName].lighting;
+  gameMusic.src = infoText[gameName].music;
+  rulesMusic.src = infoText[gameName].rules;
+  youtubeBtn.href = infoText[gameName].ytlink;
+  modelViewer.setAttribute("camera-orbit",infoText[gameName].orbit);
+  modelViewer.setAttribute("exposure",infoText[gameName].lighting);
+  lightingValue.textContent = infoText[gameName].lighting;
+  lightingSlider.value = infoText[gameName].lighting;
 
   // Check that Youtube Link and Rules exists or not
-  if(infoText[carName].ytlink ==="" && infoText[carName].rules === ""){
+  if(infoText[gameName].ytlink ==="" && infoText[gameName].rules === ""){
     youtubeBtn.style.display = "none";
     rulesBtn.style.display = "none";
   } else{
@@ -282,7 +282,7 @@ window.switchSrc = (element, foldername, name, carName) => {
   icon.classList.add("fa-pause");
   gameMusic.play();
 
-  currentGameName = carName;
+  currentGameName = gameName;
   
   const slides = document.querySelectorAll(".slide");
   slides.forEach((slide) => slide.classList.remove("selected"));
@@ -296,7 +296,7 @@ window.switchSrc = (element, foldername, name, carName) => {
       duration: 0.3,
       ease: "power1.in",
       onComplete: () => {
-        infoDisplay.innerHTML = `<h3 class='carname'">${infoText[currentGameName].title}</h3><p class="carinfo">${infoText[currentGameName].description}</p>`;;
+        infoDisplay.innerHTML = `<h3 class='gameName'">${infoText[currentGameName].title}</h3><p class="carinfo">${infoText[currentGameName].description}</p>`;;
         gsap.fromTo(
           infoDisplay,
           { y: 10, opacity: 0 },
