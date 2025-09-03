@@ -1,0 +1,380 @@
+:not(:defined) > * {
+  display: none;
+}
+
+model-viewer {
+  background-color: #eee;
+  overflow-x: hidden;
+  width: 100%;
+  height: 100vh;
+}
+
+/* Info icon button */
+#info-icon, #music-icon, #rules-icon, #setting-icon, #youtube-icon, #screenshot-icon{
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: linear-gradient(135deg, #EB0A62, #C33A6D);  
+  color: white;
+  font-size: 21px;
+  width: 50px;
+  height: 50px;
+  padding: 10px;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+#info-icon:hover, #music-icon:hover, #rules-icon:hover, #setting-icon:hover, #screenshot-icon:hover, #youtube-icon:hover  {
+  background: linear-gradient(135deg, #CC2C64, #A83E66);
+  transform: scale(1.1);
+}
+
+#music-icon{
+  top: 85px;
+}
+
+#rules-icon{
+  top: 153px;
+}
+
+#setting-icon{
+  top: 16px;
+  left: 16px;
+}
+
+#screenshot-icon{
+  top: 85px;
+  left: 16px;
+}
+
+#youtube-icon{
+  top: 153px;
+  left: 16px;
+}
+
+/* Info Box */
+#info-display {
+  position: absolute;
+  top: 50px;
+  right: 75px;
+  color: #333;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  padding: 15px 20px;
+  border-radius: 10px;
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+  display: none;
+  white-space: pre-wrap; 
+  animation: fadeIn 0.3s ease-out;
+  color: #fff;
+  background: linear-gradient(135deg, #E14D6F, #D7325A);
+  z-index: 999;
+}
+
+#info-display h3 {
+  margin: 0 0 4px 0;
+  font-size: 21px;
+  font-weight: 500;
+  text-align: center;
+}
+
+#info-display p {
+  margin: 0;
+  font-size: 15px;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slider {
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0px 50px 0px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slides {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  margin-right: 30px;
+}
+
+.slide {
+  scroll-snap-align: start;
+  flex-shrink: 0;
+  width: 100px;
+  height: 100px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #fff;
+  margin-right: 15px;
+  border-radius: 5px;
+  border: none;
+  display: flex;
+}
+
+.slide.selected {
+  border: 3px solid #E9659B;
+}
+
+div#info-display h3.carname{
+ font-size: 22px;
+}
+
+div#info-display p.carinfo{
+ font-size: 17px;
+ line-height: 1.6;
+}
+
+/* Setting */
+#settings-popup {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.6); 
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.popup-content {
+  background: linear-gradient(135deg, #cc527d, #ea497f);
+  padding: 24px 24px 10px 24px;
+  border-radius: 18px;
+  text-align: center;
+  width: 340px;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.45);
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+}
+
+/* Header */
+.popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.popup-header h3 {
+  font-size: 22px;
+  font-weight: 500;
+  color: #fff;
+  letter-spacing: 1px;
+  margin-left: 4px;
+}
+
+.close-icon {
+  font-size: 22px;
+  cursor: pointer;
+  color: #fff;
+  background: linear-gradient(135deg, #F75C7E, #EB0A62); 
+  padding: 4px 8px;
+  border-radius: 50%;
+  transition: transform 0.2s, background 0.3s;
+}
+
+.close-icon:hover {
+  transform: scale(1.2);
+  background: linear-gradient(135deg, #EB0A62, #C1094F); 
+}
+
+/* Controls */
+.lighting-control, .shadow-control, .animation-control, .scale-control, .camera-control {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 12px 0;
+  background: rgba(255,255,255,0.08); 
+  padding: 10px 14px;
+  border-radius: 12px;
+}
+
+.lighting-control label,
+.shadow-control label,
+.scale-control label,
+.camera-control label {
+  font-weight: 500;
+  color: #ffe6f0; 
+}
+
+input[type="range"] {
+  accent-color: #F75C7E; 
+  cursor: pointer;
+}
+
+.animation-control label {
+  font-weight: 500;
+  color: #fff;
+}
+
+.animation-control input[type="checkbox"] {
+  transform: scale(1.2);
+  accent-color: #F75C7E;
+  cursor: pointer;
+}
+
+/* AR Mode */
+.ar-control {
+  border-radius: 12px;
+  padding: 14px;
+  background: rgba(255,255,255,0.08);
+  margin-top: 16px;
+}
+
+.ar-label {
+  font-size: 17px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  display: block;
+  color: #fff;
+}
+
+.ar-options {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ar-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+
+.ar-option:hover {
+  background: rgba(255,255,255,0.15);
+}
+
+.ar-option input[type="radio"] {
+  accent-color: #F75C7E; 
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+.ar-option span {
+  font-size: 15px;
+  color: #fff;
+}
+
+/* AR Button */
+.ar-btn {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 14px 0;
+  border-radius: 6px;
+  padding: 12px 20px;
+  /* background: linear-gradient(135deg, #cd1e61, #c9356b);   */
+  background: linear-gradient(135deg, #e91e63, #c2185b);
+  transition: all 0.2s;
+}
+
+.ar-btn:hover {
+  background: linear-gradient(135deg, #cf3569, #d3165b); 
+  transform: scale(1.05);
+}
+
+/* Responsive for Tablets */
+@media (max-width: 730px) {
+  model-viewer {
+    height: 80vh;
+  }
+
+  /* Info box positioning */
+  #info-display {
+    top: 68px;
+    right: 14px;
+    font-size: 14px;
+    width: 95%;
+  }
+
+  #info-icon, #music-icon, #rules-icon, #setting-icon, #youtube-icon, #screenshot-icon {
+    width: 45px;
+    height: 45px;
+    font-size: 18px;
+  }
+
+  .slide {
+    width: 80px;
+    height: 80px;
+  }
+
+  .slider {
+    bottom: 8px;
+    margin: 0 20px;
+  }
+
+  div#info-display h3.carname{
+   font-size: 23px;
+  }
+
+  div#info-display p.carinfo{
+   font-size: 17px;
+  }
+}
+
+/* Responsive for Mobiles */
+@media (max-width: 480px) {
+  model-viewer {
+    height: 60vh;
+  }
+
+  #info-display {
+    top: 66px;
+    right: 10px;
+    width: 95%;
+    font-size: 12px;
+  }
+
+  #info-icon, #music-icon, #rules-icon, #setting-icon, #youtube-icon, #screenshot-icon {
+    width: 45px;
+    height: 45px;
+    font-size: 17px;
+  }
+
+  .slide {
+    width: 75px;
+    height: 75px;
+    margin-right: 10px;
+  }
+
+  .slider {
+    bottom: 10px;
+    margin: 0 18px;  
+  }
+
+  div#info-display h3.carname{
+   font-size: 22px;
+  }
+
+  div#info-display p.carinfo{
+   font-size: 16px;
+  }
+}
