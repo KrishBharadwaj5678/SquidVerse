@@ -191,7 +191,7 @@ div#info-display p.gameinfo{
   font-size: 22px;
   cursor: pointer;
   color: #fff;
-  background: linear-gradient(135deg, #F75C7E, #EB0A62); 
+  background: #cf2963; 
   padding: 4px 8px;
   border-radius: 50%;
   transition: transform 0.2s, background 0.3s;
@@ -199,7 +199,7 @@ div#info-display p.gameinfo{
 
 .close-icon:hover {
   transform: scale(1.2);
-  background: linear-gradient(135deg, #EB0A62, #C1094F); 
+  background: #EB0A62; 
 }
 
 /* Controls */
@@ -291,12 +291,12 @@ input[type="range"] {
   margin: 14px 0;
   border-radius: 6px;
   padding: 12px 20px;
-  background: linear-gradient(135deg, #e91e63, #c2185b);
+  background: #cf2963;
   transition: all 0.2s;
 }
 
 .ar-btn:hover {
-  background: linear-gradient(135deg, #cf3569, #d3165b); 
+  background: linear-gradient(135deg, #cf3569, #cc2a65); 
   transform: scale(1.05);
 }
 
