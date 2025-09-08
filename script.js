@@ -138,6 +138,15 @@ const infoText = {
     ytlink: "https://www.youtube.com/watch?v=7lVp_JW7HIY&pp=ygUOanVtcCByb3BlIGdhbWU%3D",
     lighting: "1"
   },
+  "Glass Bridge": {
+    title: "The Glass Bridge",
+    description: "• Each stepping stone is made of either tempered or normal glass. \n• Tempered glass can hold two people; normal glass breaks under one. \n• Players must guess which panel is tempered and step only on those. \n• Anyone who steps on normal glass or fails to cross within 16 minutes is eliminated. \n• Those who reach the other side in time are winners.",
+    music: "./sounds/GlassBridge.mp3",
+    orbit: "auto auto 2m",
+    rules: "./rules/GlassBridge.mp3",
+    ytlink: "https://www.youtube.com/watch?v=lwZJHHQ8ib4&pp=ygUXZ2xhc3MgYnJpZGdlIHNxdWlkIGdhbWU%3D",
+    lighting: "0.2"
+  },
   "Sky Squid Game": {
     title: "Sky Squid Game",
     description: "• Players must cross three towers without falling: Chchoris Tower, Trikon Tower, and Goal Tower. \n• The first round starts at Chchoris Tower. \n• The main objective is to push one or more players down to eliminate them. \n• Only the surviving players move to the next tower (Trikon Tower). \n• The process continues until the Goal Tower. \n• The players who remain on the Goal Tower are declared as winners. \n• If no player falls from a tower within the given time, then all players on that tower will be eliminated.",
