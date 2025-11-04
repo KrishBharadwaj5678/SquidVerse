@@ -16,6 +16,8 @@
 | ⚙️ **Settings Panel**               | Adjust scale, lighting, zoom, and more with customizable settings.   |
 | 📱 **Augmented Reality (AR)**       | Place 3D models of games in your environment using AR.               |
 
+---
+
 ## Tech Stack ⚙️
 
 | **Technology**    | **Description**                                                                         |
@@ -26,6 +28,8 @@
 | 🖼️ **Model-Viewer**  | For displaying and interacting with 3D models in the browser.                           |
 | 🕶️ **WebXR API**     | For supporting AR experiences.                                                          |
 | 📤 **Web Share API** | For enabling users to share images.                                                     |
+
+---
 
 ## Installation 🛠️
 
