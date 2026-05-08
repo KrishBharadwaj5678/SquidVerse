@@ -1,167 +1,331 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/android-chrome-512x512.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/android-chrome-192x192.png">
-  <link rel="manifest" href="/site.webmanifest">
-  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
-  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <link rel="icon" type="image/png" href="favicon/favicon-96x96.png" sizes="96x96" />
-  <link rel="icon" type="image/svg+xml" href="favicon/favicon.svg" />
-  <link rel="shortcut icon" href="favicon/favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
-  <meta name="apple-mobile-web-app-title" content="Squidverse" />
-  <link rel="manifest" href="favicon/site.webmanifest" />
-  <link rel="stylesheet" href="./style.css">
-  <title>Squidverse</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/favicon_io/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/favicon_io/android-chrome-512x512.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/favicon_io/android-chrome-192x192.png"
+    />
+    <link rel="manifest" href="/site.webmanifest" />
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <script
+      type="module"
+      src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"
+    ></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link
+      rel="icon"
+      type="image/png"
+      href="favicon/favicon-96x96.png"
+      sizes="96x96"
+    />
+    <link rel="icon" type="image/svg+xml" href="favicon/favicon.svg" />
+    <link rel="shortcut icon" href="favicon/favicon.ico" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="favicon/apple-touch-icon.png"
+    />
+    <meta name="apple-mobile-web-app-title" content="Squidverse" />
+    <link rel="manifest" href="favicon/site.webmanifest" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Squidverse</title>
+  </head>
+  <body>
+    <model-viewer
+      src="./models/RedLight/RedLight.glb"
+      style="width: 100vw; height: 100vh"
+      camera-controls
+      shadow-intensity="1"
+      touch-action="pan-y"
+      ar
+      scale="0.1 0.1 0.1"
+      min-camera-orbit="auto auto 1m"
+      max-camera-orbit="auto auto 20m"
+      camera-orbit="180deg auto 1m"
+      exposure="1"
+      animation-name="DollHeadAction"
+      autoplay
+      ar-modes="webxr"
+    >
+      <!-- Info Feature -->
+      <button id="info-icon">
+        <i class="fas fa-info"></i>
+      </button>
 
-  <model-viewer src="./models/RedLight/RedLight.glb" style="width: 100vw; height: 100vh;" camera-controls shadow-intensity="1" touch-action="pan-y" ar scale="0.1 0.1 0.1" min-camera-orbit="auto auto 1m" max-camera-orbit="auto auto 20m" camera-orbit="180deg auto 1m" exposure="1" animation-name="DollHeadAction" autoplay ar-modes="webxr"
- >
+      <div id="info-display"></div>
 
-  <!-- Info Feature -->
-  <button id="info-icon">
-    <i class="fas fa-info"></i>
-  </button>
+      <!-- Music Icon -->
+      <button id="music-icon">
+        <i class="fas fa-play"></i>
+      </button>
 
-  <div id="info-display"></div>
+      <!-- Rules Icon -->
+      <button id="rules-icon">
+        <i class="fas fa-r"></i>
+      </button>
 
-  <!-- Music Icon -->
-  <button id="music-icon">
-    <i class="fas fa-play"></i>
-  </button>
+      <!-- Setting Icon -->
+      <button id="setting-icon">
+        <i class="fas fa-gear"></i>
+      </button>
 
-  <!-- Rules Icon -->
-  <button id="rules-icon">
-    <i class="fas fa-r"></i>
-  </button>
+      <!-- Setting Slider -->
+      <div id="settings-popup">
+        <div class="popup-content">
+          <!-- Header -->
+          <div class="popup-header">
+            <h3>Settings</h3>
+            <i class="fa-solid fa-xmark close-icon" id="close-popup"></i>
+          </div>
 
-  <!-- Setting Icon -->
-  <button id="setting-icon">
-    <i class="fas fa-gear"></i>
-  </button>
+          <!-- Scale -->
+          <div class="scale-control">
+            <label for="scaleSlider">Scale</label>
+            <input
+              type="range"
+              id="scaleSlider"
+              min="0.01"
+              max="0.5"
+              step="0.01"
+              value="0.1"
+            />
+            <span id="scaleValue">0.1</span>
+          </div>
 
-  <!-- Setting Slider -->
-  <div id="settings-popup">
-    <div class="popup-content">
-      <!-- Header -->
-      <div class="popup-header">
-        <h3>Settings</h3>
-        <i class="fa-solid fa-xmark close-icon" id="close-popup"></i>
-      </div>
+          <!-- Camera -->
+          <div class="camera-control">
+            <label for="cameraSlider">Zoom</label>
+            <input
+              type="range"
+              id="cameraSlider"
+              min="0.1"
+              max="20"
+              step="0.1"
+              value="1"
+            />
+            <span id="cameraValue">1</span>
+          </div>
 
-      <!-- Scale -->
-      <div class="scale-control">
-        <label for="scaleSlider">Scale</label>
-        <input type="range" id="scaleSlider" min="0.01" max="0.5" step="0.01" value="0.1">
-        <span id="scaleValue">0.1</span>
-      </div>
-      
-      <!-- Camera -->
-      <div class="camera-control">
-        <label for="cameraSlider">Zoom</label>
-        <input type="range" id="cameraSlider" min="0.1" max="20" step="0.1" value="1">
-        <span id="cameraValue">1</span>
-      </div>
+          <!-- Lighting -->
+          <div class="lighting-control">
+            <label for="exposureSlider">Lighting</label>
+            <input
+              type="range"
+              id="exposureSlider"
+              min="0.1"
+              max="3"
+              step="0.1"
+              value="1"
+            />
+            <span id="exposureValue">1</span>
+          </div>
 
-      <!-- Lighting -->
-      <div class="lighting-control">
-        <label for="exposureSlider">Lighting</label>
-        <input type="range" id="exposureSlider" min="0.1" max="3" step="0.1" value="1">
-        <span id="exposureValue">1</span>
-      </div>
+          <!-- Shadow -->
+          <div class="shadow-control">
+            <label for="shadowSlider">Shadow</label>
+            <input
+              type="range"
+              id="shadowSlider"
+              min="0.1"
+              max="2"
+              step="0.1"
+              value="1"
+            />
+            <span id="shadowValue">1</span>
+          </div>
 
-      <!-- Shadow -->
-      <div class="shadow-control">
-        <label for="shadowSlider">Shadow</label>
-        <input type="range" id="shadowSlider" min="0.1" max="2" step="0.1" value="1">
-        <span id="shadowValue">1</span>
-      </div>
+          <!-- Animation -->
+          <div class="animation-control">
+            <input type="checkbox" id="animation" checked />
+            <label for="animation">Animation</label>
+          </div>
 
-      <!-- Animation -->
-      <div class="animation-control">
-        <input type="checkbox" id="animation" checked>
-        <label for="animation">Animation</label>
-      </div>
+          <!-- AR Modes -->
+          <div class="ar-control">
+            <label class="ar-label">AR Mode</label>
+            <div class="ar-options">
+              <label class="ar-option">
+                <input type="radio" name="arMode" value="webxr" checked />
+                <span>Browser AR</span>
+              </label>
+              <label class="ar-option">
+                <input type="radio" name="arMode" value="scene-viewer" />
+                <span>Android AR</span>
+              </label>
+            </div>
+          </div>
 
-      <!-- AR Modes -->
-      <div class="ar-control">
-        <label class="ar-label">AR Mode</label>
-        <div class="ar-options">
-          <label class="ar-option">
-            <input type="radio" name="arMode" value="webxr" checked>
-            <span>Browser AR</span>
-          </label>
-          <label class="ar-option">
-            <input type="radio" name="arMode" value="scene-viewer">
-            <span>Android AR</span>
-          </label>
+          <button slot="ar-button" class="ar-btn">Enter AR</button>
         </div>
       </div>
 
-      <button slot="ar-button" class="ar-btn">
-       Enter AR
+      <!-- Screenshot -->
+      <button id="screenshot-icon">
+        <i class="fa-solid fa-camera"></i>
       </button>
 
-    </div>
-  </div>
+      <!-- Game Video (YT) -->
+      <a
+        href="https://www.youtube.com/watch?v=2rl0tlLG2kI&pp=ygUfcmVkIGxpZ3RoIGdyZWVuIGxpZ2h0ICBzZWFzb24gMQ%3D%3D"
+        id="yt-video"
+        target="_blank"
+      >
+        <button id="youtube-icon">
+          <i class="fa-brands fa-youtube"></i>
+        </button>
+      </a>
 
-  <!-- Screenshot -->
-  <button id="screenshot-icon">
-    <i class="fa-solid fa-camera"></i>
-  </button>
+      <div class="slider">
+        <div class="slides">
+          <!-- Red Light Green Light -->
+          <button
+            class="slide selected"
+            onclick="
+              switchSrc(this, './models/RedLight', 'RedLight', 'Red Light')
+            "
+            style="
+              background-image: url(&quot;./models/RedLight/RedLight.jpeg&quot;);
+            "
+          ></button>
 
-  <!-- Game Video (YT) -->
-  <a href="https://www.youtube.com/watch?v=2rl0tlLG2kI&pp=ygUfcmVkIGxpZ3RoIGdyZWVuIGxpZ2h0ICBzZWFzb24gMQ%3D%3D" id="yt-video" target="_blank">
-    <button id="youtube-icon">
-      <i class="fa-brands fa-youtube"></i>
-    </button>
-  </a>
+          <!-- Mingle -->
+          <button
+            class="slide"
+            onclick="switchSrc(this, './models/Mingle', 'Mingle', 'Mingle')"
+            style="
+              background-image: url(&quot;./models/Mingle/Mingle.jpg&quot;);
+            "
+          ></button>
 
-  <div class="slider">
-    <div class="slides">
+          <!-- Jump Rope -->
+          <button
+            class="slide"
+            onclick="
+              switchSrc(this, './models/JumpRope', 'JumpRope', 'Jump Rope')
+            "
+            style="
+              background-image: url(&quot;./models/JumpRope/JumpRope.jpeg&quot;);
+            "
+          ></button>
 
-      <!-- Red Light Green Light -->
-      <button class="slide selected" onclick="switchSrc(this, './models/RedLight', 'RedLight', 'Red Light')" style="background-image: url('./models/RedLight/RedLight.jpeg');"></button>
+          <!-- Glass Bridge -->
+          <button
+            class="slide"
+            onclick="
+              switchSrc(
+                this,
+                './models/GlassBridge',
+                'GlassBridge',
+                'Glass Bridge',
+              )
+            "
+            style="
+              background-image: url(&quot;./models/GlassBridge/GlassBridge.jpeg&quot;);
+              background-size: cover;
+            "
+          ></button>
 
-      <!-- Mingle -->
-      <button class="slide" onclick="switchSrc(this, './models/Mingle', 'Mingle', 'Mingle')" style="background-image: url('./models/Mingle/Mingle.jpg');"></button>
+          <!-- Sky Squid Game -->
+          <button
+            class="slide"
+            onclick="
+              switchSrc(
+                this,
+                './models/SkySquidGame',
+                'SkySquidGame',
+                'Sky Squid Game',
+              )
+            "
+            style="
+              background-image: url(&quot;./models/SkySquidGame/SkySquidGame.jpeg&quot;);
+            "
+          ></button>
 
-      <!-- Jump Rope -->
-      <button class="slide" onclick="switchSrc(this, './models2/JumpRope', 'JumpRope', 'Jump Rope')" style="background-image: url('./models2/JumpRope/JumpRope.jpeg');"></button>
+          <!-- Hide And Seek Game -->
+          <button
+            class="slide"
+            onclick="
+              switchSrc(
+                this,
+                './models/HideAndSeek',
+                'HideAndSeek',
+                'Hide And Seek',
+              )
+            "
+            style="
+              background-image: url(&quot;./models/HideAndSeek/HideAndSeek.jpeg&quot;);
+              background-size: cover;
+            "
+          ></button>
 
-      <!-- Glass Bridge -->
-      <button class="slide" onclick="switchSrc(this, './models4/GlassBridge', 'GlassBridge', 'Glass Bridge')" style="background-image: url('./models4/GlassBridge/GlassBridge.jpeg'); background-size: cover;"></button>
+          <!-- Dalgona -->
+          <button
+            class="slide"
+            onclick="switchSrc(this, './models/Dalgona', 'Dalgona', 'Dalgona')"
+            style="
+              background-image: url(&quot;./models/Dalgona/Dalgona.jpeg&quot;);
+              background-size: cover;
+            "
+          ></button>
 
-      <!-- Sky Squid Game -->
-      <button class="slide" onclick="switchSrc(this, './models2/SkySquidGame', 'SkySquidGame', 'Sky Squid Game')" style="background-image: url('./models2/SkySquidGame/SkySquidGame.jpeg');"></button>
+          <!-- Game Lobby -->
+          <button
+            class="slide"
+            onclick="
+              switchSrc(this, './models/GameLobby', 'GameLobby', 'Game Lobby')
+            "
+            style="
+              background-image: url(&quot;./models/GameLobby/GameLobby.jpeg&quot;);
+              background-size: cover;
+            "
+          ></button>
 
-      <!-- Hide And Seek Game -->
-      <button class="slide" onclick="switchSrc(this, './models2/HideAndSeek', 'HideAndSeek', 'Hide And Seek')" style="background-image: url('./models2/HideAndSeek/HideAndSeek.jpeg'); background-size: cover;"></button>
+          <!-- Restroom -->
+          <button
+            class="slide"
+            onclick="
+              switchSrc(this, './models/Restroom', 'Restroom', 'Restroom')
+            "
+            style="
+              background-image: url(&quot;./models/Restroom/Restroom.jpeg&quot;);
+              background-size: cover;
+            "
+          ></button>
 
-      <!-- Dalgona -->
-      <button class="slide" onclick="switchSrc(this, './models2/Dalgona', 'Dalgona', 'Dalgona')" style="background-image: url('./models2/Dalgona/Dalgona.jpeg'); background-size: cover;"></button>
+          <!-- Staircase -->
+          <button
+            class="slide"
+            onclick="
+              switchSrc(this, './models/Staircase', 'Staircase', 'Staircase')
+            "
+            style="
+              background-image: url(&quot;./models/Staircase/Staircase.jpeg&quot;);
+              background-size: cover;
+            "
+          ></button>
+        </div>
+      </div>
+    </model-viewer>
 
-      <!-- Game Lobby -->
-      <button class="slide" onclick="switchSrc(this, './models3/GameLobby', 'GameLobby', 'Game Lobby')" style="background-image: url('./models3/GameLobby/GameLobby.jpeg'); background-size: cover;"></button>
-
-      <!-- Restroom -->
-      <button class="slide" onclick="switchSrc(this, './models4/Restroom', 'Restroom', 'Restroom')" style="background-image: url('./models4/Restroom/Restroom.jpeg'); background-size: cover;"></button>
-
-      <!-- Staircase -->
-      <button class="slide" onclick="switchSrc(this, './models4/Staircase', 'Staircase', 'Staircase')" style="background-image: url('./models4/Staircase/Staircase.jpeg'); background-size: cover;"></button>
-
-    </div>
-  </div>
-
-  </model-viewer>
-
-<script src="./script.js" defer></script>
-</body>
+    <script src="./script.js" defer></script>
+  </body>
 </html>

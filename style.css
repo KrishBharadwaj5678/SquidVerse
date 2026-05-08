@@ -10,11 +10,16 @@ model-viewer {
 }
 
 /* Info icon button */
-#info-icon, #music-icon, #rules-icon, #setting-icon, #youtube-icon, #screenshot-icon{
+#info-icon,
+#music-icon,
+#rules-icon,
+#setting-icon,
+#youtube-icon,
+#screenshot-icon {
   position: absolute;
   top: 16px;
   right: 16px;
-  background: linear-gradient(135deg, #EB0A62, #C33A6D);  
+  background: linear-gradient(135deg, #eb0a62, #c33a6d);
   color: white;
   font-size: 21px;
   width: 50px;
@@ -27,30 +32,35 @@ model-viewer {
   transition: all 0.3s ease-in-out;
 }
 
-#info-icon:hover, #music-icon:hover, #rules-icon:hover, #setting-icon:hover, #screenshot-icon:hover, #youtube-icon:hover  {
-  background: linear-gradient(135deg, #CC2C64, #A83E66);
+#info-icon:hover,
+#music-icon:hover,
+#rules-icon:hover,
+#setting-icon:hover,
+#screenshot-icon:hover,
+#youtube-icon:hover {
+  background: linear-gradient(135deg, #cc2c64, #a83e66);
   transform: scale(1.1);
 }
 
-#music-icon{
+#music-icon {
   top: 85px;
 }
 
-#rules-icon{
+#rules-icon {
   top: 153px;
 }
 
-#setting-icon{
+#setting-icon {
   top: 16px;
   left: 16px;
 }
 
-#screenshot-icon{
+#screenshot-icon {
   top: 85px;
   left: 16px;
 }
 
-#youtube-icon{
+#youtube-icon {
   top: 153px;
   left: 16px;
 }
@@ -61,17 +71,17 @@ model-viewer {
   top: 50px;
   right: 75px;
   color: #333;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 16px;
   line-height: 1.5;
   padding: 15px 20px;
   border-radius: 10px;
   box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
   display: none;
-  white-space: pre-wrap; 
+  white-space: pre-wrap;
   animation: fadeIn 0.3s ease-out;
   color: #fff;
-  background: linear-gradient(135deg, #E14D6F, #D7325A);
+  background: linear-gradient(135deg, #e14d6f, #d7325a);
   z-index: 999;
 }
 
@@ -138,24 +148,27 @@ model-viewer {
 }
 
 .slide.selected {
-  border: 3px solid #E9659B;
+  border: 3px solid #e9659b;
 }
 
-div#info-display h3.gameName{
- font-size: 22px;
+div#info-display h3.gameName {
+  font-size: 22px;
 }
 
-div#info-display p.gameinfo{
- font-size: 17px;
- line-height: 1.6;
+div#info-display p.gameinfo {
+  font-size: 17px;
+  line-height: 1.6;
 }
 
 /* Setting */
 #settings-popup {
   display: none;
   position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0,0,0,0.6); 
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
   align-items: center;
   justify-content: center;
   z-index: 1000;
@@ -167,7 +180,7 @@ div#info-display p.gameinfo{
   border-radius: 18px;
   text-align: center;
   width: 340px;
-  box-shadow: 0 8px 28px rgba(0,0,0,0.45);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.45);
   font-family: "Poppins", sans-serif;
   color: #fff;
 }
@@ -191,24 +204,30 @@ div#info-display p.gameinfo{
   font-size: 22px;
   cursor: pointer;
   color: #fff;
-  background: #cf2963; 
+  background: #cf2963;
   padding: 4px 8px;
   border-radius: 50%;
-  transition: transform 0.2s, background 0.3s;
+  transition:
+    transform 0.2s,
+    background 0.3s;
 }
 
 .close-icon:hover {
   transform: scale(1.2);
-  background: #EB0A62; 
+  background: #eb0a62;
 }
 
 /* Controls */
-.lighting-control, .shadow-control, .animation-control, .scale-control, .camera-control {
+.lighting-control,
+.shadow-control,
+.animation-control,
+.scale-control,
+.camera-control {
   display: flex;
   align-items: center;
   gap: 12px;
   margin: 12px 0;
-  background: rgba(255,255,255,0.08); 
+  background: rgba(255, 255, 255, 0.08);
   padding: 10px 14px;
   border-radius: 12px;
 }
@@ -218,11 +237,11 @@ div#info-display p.gameinfo{
 .scale-control label,
 .camera-control label {
   font-weight: 500;
-  color: #ffe6f0; 
+  color: #ffe6f0;
 }
 
 input[type="range"] {
-  accent-color: #F75C7E; 
+  accent-color: #f75c7e;
   cursor: pointer;
 }
 
@@ -233,7 +252,7 @@ input[type="range"] {
 
 .animation-control input[type="checkbox"] {
   transform: scale(1.2);
-  accent-color: #F75C7E;
+  accent-color: #f75c7e;
   cursor: pointer;
 }
 
@@ -241,7 +260,7 @@ input[type="range"] {
 .ar-control {
   border-radius: 12px;
   padding: 14px;
-  background: rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.08);
   margin-top: 16px;
 }
 
@@ -270,11 +289,11 @@ input[type="range"] {
 }
 
 .ar-option:hover {
-  background: rgba(255,255,255,0.15);
+  background: rgba(255, 255, 255, 0.15);
 }
 
 .ar-option input[type="radio"] {
-  accent-color: #F75C7E; 
+  accent-color: #f75c7e;
   transform: scale(1.2);
   cursor: pointer;
 }
@@ -296,7 +315,7 @@ input[type="range"] {
 }
 
 .ar-btn:hover {
-  background: linear-gradient(135deg, #cf3569, #cc2a65); 
+  background: linear-gradient(135deg, #cf3569, #cc2a65);
   transform: scale(1.05);
 }
 
@@ -314,7 +333,12 @@ input[type="range"] {
     width: 95%;
   }
 
-  #info-icon, #music-icon, #rules-icon, #setting-icon, #youtube-icon, #screenshot-icon {
+  #info-icon,
+  #music-icon,
+  #rules-icon,
+  #setting-icon,
+  #youtube-icon,
+  #screenshot-icon {
     width: 45px;
     height: 45px;
     font-size: 18px;
@@ -330,12 +354,12 @@ input[type="range"] {
     margin: 0 20px;
   }
 
-  div#info-display h3.gameName{
-   font-size: 23px;
+  div#info-display h3.gameName {
+    font-size: 23px;
   }
 
-  div#info-display p.gameinfo{
-   font-size: 17px;
+  div#info-display p.gameinfo {
+    font-size: 17px;
   }
 }
 
@@ -352,7 +376,12 @@ input[type="range"] {
     font-size: 12px;
   }
 
-  #info-icon, #music-icon, #rules-icon, #setting-icon, #youtube-icon, #screenshot-icon {
+  #info-icon,
+  #music-icon,
+  #rules-icon,
+  #setting-icon,
+  #youtube-icon,
+  #screenshot-icon {
     width: 48px;
     height: 48px;
     font-size: 18px;
@@ -366,18 +395,18 @@ input[type="range"] {
 
   .slider {
     bottom: 10px;
-    margin: 0 18px;  
+    margin: 0 18px;
   }
 
-  div#info-display h3.gameName{
-   font-size: 22px;
+  div#info-display h3.gameName {
+    font-size: 22px;
   }
 
-  div#info-display p.gameinfo{
-   font-size: 16px;
+  div#info-display p.gameinfo {
+    font-size: 16px;
   }
 
-  .popup-header h3{
+  .popup-header h3 {
     font-size: 22.2px;
   }
 }
