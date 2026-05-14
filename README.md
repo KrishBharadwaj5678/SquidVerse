@@ -33,18 +33,16 @@
 
 ## 🛠️ Installation 
 
-To run SquidVerse locally, follow these steps:
-
-1. Clone the repository:
+### 1️⃣ Clone the repository:
 
    ```bash
    git clone https://github.com/KrishBharadwaj5678/SquidVerse.git
    ```
 
-2. Navigate to the project directory:
+### 2️⃣ Navigate to the project directory:
 
    ```bash
    cd SquidVerse
    ```
    
-3. Open the app in your browser.
+### 3️⃣ Open the app in your browser.
